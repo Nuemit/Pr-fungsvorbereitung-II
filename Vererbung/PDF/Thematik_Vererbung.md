@@ -2,7 +2,7 @@
 ### Begriffsbestimmung
 Vererbung basiert auf den Folgerungen daraus, das ein Hausarzt auch ein Arzt ist. 
 
-**Folgerung 1:** Das heißt wenn Y über die **Eigenschaften (Variablen)** a, b, c beschrieben werden kann, kann X auch über diese Eigenschaften beschrieben werden.
+**Folgerung 1:** Das heißt wenn der Arzt über die **Eigenschaften (Variablen)** arbeitetImKrankenhaus, b, c beschrieben werden kann, kann X auch über diese Eigenschaften beschrieben werden.
 
 ```java
 // Klassenkopf kann vorerst Ignoriert werden
