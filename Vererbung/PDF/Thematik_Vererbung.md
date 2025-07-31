@@ -1,6 +1,6 @@
 # PII Vererbung
 ### Begriffsbestimmung
-Vererbung basiert auf den Folgerungen daraus, das ein X auch ein Y ist. 
+Vererbung basiert auf den Folgerungen daraus, das ein Hausarzt auch ein Arzt ist. 
 
 **Folgerung 1:** Das heißt wenn Y über die **Eigenschaften (Variablen)** a, b, c beschrieben werden kann, kann X auch über diese Eigenschaften beschrieben werden.
 
