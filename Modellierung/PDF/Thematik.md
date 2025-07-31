@@ -51,3 +51,20 @@ public class Mainclass {
 | Zugriff | Über den Klassennahmen  (z.B. `Auto.ANZAHL_REIFEN`) | über die Instanz (z.B. `barky.name`) |
 | Werte | Ein Wert für alle Instanzen dieser Klasse | Jede Instanz hat eigenen Wert |
 | Schlüsselwort | `static` | | 
+
+### Objektorientierte Verwaltungsmethoden
+Verwaltungsmethoden sind Methoden die es uns Ermöglichen:
+- Objekte zu erstellen (Konstruktoren)
+- Auf den Zustand von Objekten zu zugreifen (Getter)
+- Den Zustand von Objekten zu ändern (Setter)
+- Das Verhalten von Objekten zu Steuern (Business-Logik-Methoden)
+- Objekte darzustellen oder zu vergleichen (`toString()`, `equals()`, `hashcode()`)
+
+Sie bilden die Schnittstelle, über die andere Teile eines Programms mit den Objekten interagieren, deren Daten kapseln und ihre Integrität wahren. Das Konzept der Kapselung (Daten und die darauf operierenden Methoden sind zusammen in einem Objekt gebündelt und der Zugriff auf die Daten ist kontrolliert) ist hierbei von Zentraler bedeutung.
+
+- Konstruktoren
+- Getter-Methoden (Zugriffsmethoden / Accessors)
+- Setter-Methoden (Mutator-Methoden / Mutators)
+- Business-Logik-Methoden / Verhaltensmethoden
+- `toString()`-Methode
+- `equals()`- und `hashCode()`-Methode
