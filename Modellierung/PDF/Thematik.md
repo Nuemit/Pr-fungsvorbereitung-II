@@ -3,17 +3,17 @@
   - Klassen
   - Arrays
 
-### Klassen und Arrays Können
+## Klassen und Arrays Können
 - Bei der Variablen-Definition wie einfache Datentypen eingesetzt werden
 - Den Datentyp einer lokalen Variable bilden.
 - Den Datentyp der Elemente eines Arrays bilden 
 - Den Datentyp eines Attributes einer anderen Klasse bilden.
 
-### Zugriff auf Objekte
+## Zugriff auf Objekte
 - Zugriff auf Attribute und Methoden eines Objektes erfolgen mit einem `.` also einem ***Member-Zugriffsoperator***
   - Aufgrund dessen, das Objekte immer per Referenz angesprochen werden, übernimmt Java die *Dereferenzierung* also die Auflösung der Referenz, so dass das Objekt angesprochen wird.
 
-### Komplexe Datentypen
+## Komplexe Datentypen
 Komplexe Datentypen werden in Java als Referenztypen bezeichnet, weil sie "per Referenz" verarbeitet werden. Es können Objekte erzeugt werden die als Referenz einen Komplexen Datentyp haben.
 
 **Konstruktoren** gehören zu den OO-Verwaltungsmethoden. Er bekommt die zu setztenden *Werte* der "Attribute/Eigenschaften" übergeben.
@@ -26,8 +26,10 @@ Komplexe Datentypen werden in Java als Referenztypen bezeichnet, weil sie "per R
 ```java
 public class Auto {
     // Klassenattribut
-    public static final int ANZAHL_REIFEN = 4; // gilt für alle Autos!
-    public static int maxVelocity = 250; // gilt immernoch für alle Autos, kann aber verändert werden!
+    // gilt für alle Autos!
+    public static final int ANZAHL_REIFEN = 4; 
+    // gilt immernoch für alle Autos, kann aber verändert werden!
+    public static int maxVelocity = 250; 
 }
 ```
 **Was sind Instanzattribute?**
@@ -62,15 +64,49 @@ public class Mainclass {
 | Schlüsselwort | `static` | | 
 
 
-### Dereferenzierung
+## Dereferenzierung
 ... Bedeutet, dass mit Hilfe einer Referenz auf den Wert einer Variablen zugegriffen wird. Dies erfolgt in Java mittels des ***Member-Zugriffsoperator*** bei Objekten und Ihren *Attributen / Methoden*, des `[]` Operators bei Arrays und ihren Elementen. Außerdem kommt es bei der Dereferenzierung zum Absturz mit einer NullpointerException, wenn keine Adresse vorhanden ist, d.h. wenn die Referenzvariable den Wert null hat.
 
 **Beispiel:**
 - Stellen wir uns vor, wir haben ein Objekt `Auto`.
 - Das **Objekt** `Auto` wird nicht direkt in einer Variable (z.B. `Auto meinAuto;`) gespeichert, sondern irgendwo im Speicher des Computers (der sogenannte "Heap").
 - Die **Variable** `meinAuto` speichert dann nicht das __Objekt__ `Auto`, sondern nur den ***Verweis*** zu diesem `Auto` im Speicher. Das wird als ***Referenz*** bezeichnet.
+- Die *Dereferenzierung* ist nun der Prozess, bei dem die JVM dieser Referenz folgt um zum tatsächlichen Objekt im Speicher zu gelangen. Java macht das immer Automatisch für den Programmierer. Immer wenn jetzt der ***Member-Zugriffsoperator*** `.` genutzt wird um auf ein Attribut oder eine Methode eines Objekts zuzugreifen, findet im Hintergrund eine Dereferenzierung statt. 
 
-### Objektorientierte Verwaltungsmethoden
+```java
+// Beispiel Auto
+public class Auto {
+    String farbe = "rot"; // ein Attribut
+    void fahren() {       // Eine Methode
+        System.out.println("Brumm Brumm");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        /** 1. Ein Auto-Objekt wird erstellt.
+         *      'meinAuto' speichert deine REFERENZ auf dieses Objekt.
+         */
+        Auto meinAuto = new Auto(); 
+
+        /** 2. Dereferenzierung findet hier statt
+         *  Java folgt der Referenz in 'meinAuto', 
+         *  findet das Objekt und greift auf 'farbe' zu.
+         */
+        System.out.println(meinAuto.farbe);
+
+        // Genau das Selbe nur mit einer Methode
+        meinAuto.fahren();
+
+        // Beispiel für Nullpointer
+        Auto deinAuto = null;
+        deinAuto.fahren() // Wirft eine NullPointerException.
+    }
+}
+
+```
+
+## Objektorientierte Verwaltungsmethoden
 Verwaltungsmethoden sind Methoden die es uns Ermöglichen:
 - Objekte zu erstellen (Konstruktoren)
 - Auf den Zustand von Objekten zu zugreifen (Getter)
@@ -97,4 +133,44 @@ public class Beispiel {
 - `toString()`-Methode
 - `equals()`- und `hashCode()`-Methode
 
-### Arrays
+## Call By Value / Referenz
+### Value
+Wenn etwas mit *Call by Value* übergeben wird, wird eine **Kopie** des *Wertes* an die Methode weitergegeben. Die Methode arbeitet dann nur mit dieser Kopie. Was auch immer die Methode mit der Kopie macht, hat keine Auswirkung auf das **Original** außerhalb der Methode.
+
+In Java werden primitive Datentypen (Wie int, double, boolean, char) immer per ***Call by Value*** übergeben, ein Beispiel:
+
+```java
+public class CallByValue {
+
+    /** Zahl ist hier eine Kopie des Wertes der Übergeben wird.
+     */
+    public static void erhoeheZahl(int zahl) {
+        zahl += 10;
+        System.out.println("In der Methode: " + Zahl);
+    }
+
+    
+    public static void main(String[] args) {
+        int originalZahl = 5;
+
+        // Gibt 5 aus
+        System.out.println("Vor dem Aufruf der Methode: " + originalZahl);
+
+        // Gibt 15 aus
+        // Original wird nicht verändert.
+        erhoeheZahl(originalZahl);
+
+        // Gibt 5 aus
+        System.out.println("Nach dem Aufruf: " + originalZahl);
+    }
+}
+```
+
+**Ausgabe**
+> Vor dem Aufruf 5
+  In der Methode 15
+  Nach dem Aufruf 5
+
+Wie man erkennen kann, ändert sich der Wert von `originalZahl` nicht, da die Methode `erhoeheZahl()` mit einer Kopie arbeitet.
+
+### Referenz
