@@ -137,13 +137,12 @@ public class Beispiel {
 ### Value
 Wenn etwas mit *Call by Value* übergeben wird, wird eine **Kopie** des *Wertes* an die Methode weitergegeben. Die Methode arbeitet dann nur mit dieser Kopie. Was auch immer die Methode mit der Kopie macht, hat keine Auswirkung auf das **Original** außerhalb der Methode.
 
-In Java werden primitive Datentypen (Wie int, double, boolean, char) immer per ***Call by Value*** übergeben, ein Beispiel:
+In Java werden primitive Datentypen (wie `int`, `double`, `boolean`, `char`) immer per ***Call by Value*** übergeben, ein Beispiel:
 
 ```java
 public class CallByValue {
 
-    /** Zahl ist hier eine Kopie des Wertes der Übergeben wird.
-     */
+    /** Zahl ist hier eine Kopie des Wertes der Übergeben wird. */
     public static void erhoeheZahl(int zahl) {
         zahl += 10;
         System.out.println("In der Methode: " + Zahl);
@@ -174,3 +173,40 @@ public class CallByValue {
 Wie man erkennen kann, ändert sich der Wert von `originalZahl` nicht, da die Methode `erhoeheZahl()` mit einer Kopie arbeitet.
 
 ### Referenz
+Bei *Call by Reference* wird nicht der Wert selbst übergeben, sondern der "Verweis" (Speicherreferenz) auf den Ursprünglichen wert. Die Methode verändert somit keine Kopie, sondern direkt das "Original".
+
+Java verwendet aber nie "reines" *Call by Reference* im Sinne, dass die Referenz selbst überschrieben wird. Stattdessen verwendet Java eine Mischform, die oft als ***Call by Value for Reference*** bezeichnet wird. Das bedeutet Konkret, das eine Kopie der Referenz übergeben wird, diese Kopie der Adresse zeigt aber immernoch dasselbe Originalobjekt im Speicher an und die Methode kann über diese Kopie der Referenz das Originalobjekt manipulieren. somit sieht ein Beispiel dafür so aus:
+
+```java
+public class CallByReferenz {
+
+    // Arrays sind Objekte, also wird hier callByReference verwendet.
+    public static void changeArrayIndex1(String[] arrayObject) {
+        arrayObject[1] = "OnePiece"; 
+    }
+
+    public static void main(String[] args) {
+        String[] array = new String[3]; 
+        array[0] = "Hallo";
+        array[1] = "Welt";
+        array[2] = "- JUHUUUU!";
+        
+        for(String n: array) {  // Ausgabe: "Hallo Welt - JUHUUUU"
+            System.out.print(n + " ")
+        }
+
+        changeArrayIndex1(array);
+        
+        for(String n: array) { // Ausgabe: "Hallo OnePiece - JUHUUUU"
+            System.out.print(n + " ")
+        }
+    }
+}
+```
+**Ausgabe**
+Vor dem Aufruf
+> "Hallo Welt - JUHUUUU!"
+
+Nach dem aufruf
+> "Hallo OnePiece - JUHUUUU!
+
