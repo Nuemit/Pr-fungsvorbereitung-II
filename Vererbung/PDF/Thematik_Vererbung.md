@@ -61,6 +61,10 @@ public class Vererbung {
 **Ober-/Unterklasse:** Ganz nach dem Satz "Jedes X (Hausarzt) ist auch ein Y (Arzt)", wird X (Hausarzt) die Variablen und Methoden von Y (Arzt) besitzen. Somit ist X (Hausarzt) eine **Unterklasse** und da Y (Arzt) die Variablen und Methoden weitergibt, die **Oberklasse** in dieser Konstellation.
 
 
+**Einfach-/Mehrfachvererbung:** In Java ist es über den oben gezeigten Weg möglich zwischen zwei Klassen **einfach** zu vererben. Mehrfachvererbung ist über diesen Weg **nicht** möglich.
+
+Vererbung ist nicht auf zwei Klassen begrenzt. Theoretisch ist auch eine Vererbungskette wie folgend aussehen: Arzt <- Hausarzt <- NotdienstHausarzt 
+
 ### Vererbung in Java
 
 
