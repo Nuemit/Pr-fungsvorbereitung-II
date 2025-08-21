@@ -1,0 +1,84 @@
+# Interface - Definition
+Ein Interface in Java ist wie ein Bauplan für eine Klasse. Es definiert, was eine Klasse tun kann, aber nicht wie.
+
+Das Interface legt die Regeln fest, welche Methoden Implementiert werden müssen, aber nicht wie die Methoden funktionieren.
+
+Merke:
+* Ein Interface enthält nur Methoden-Signaturen (also den Namen, die Parameter und den Rückgabetyp). 
+* Es gibt keine Methodenrümpfe (code in geschweiften Klammern {}).
+* Eine Klasse, die ein Interface implementiert, ist dazu verpflichtet, alle Methoden die dieses Interfaces mit bringt, mit eigenem code auszuführen.
+
+## Interface-Kopf - Definition
+Ein Interface-Kopf deifiniert den Namen des Interfaces und eventuell Interfaces, deren Methoden-Definitionen und Konstanten dieses Interface erbt.
+
+```java
+public interface MyInterface extends Interface1, Interface2
+```
+
+## Interface-Rumpf - Definition
+Bei der Definition eines Interfaces, dürfen ausschließlich öffentliche konstante Klassenattribute und Methodenköpfe angegeben werden.
+
+**So ist ein beispiel für attribute**
+
+* [public] kann weg gelassen werden, es ist trotzdem public
+* [static] kann weg gelassen werden, es ist trotzdem static
+* [final] kann weg gelassen werden, es ist trotzdem final
+
+```java
+public static final datentyp attributname = literal;
+```
+
+**So ist ein beispiel für Methoden**
+
+* [public] kann weg gelassen werden, es ist trotzdem public
+* [abstract] kann weg gelassen werden, es ist trotzdem abstract
+
+```java
+public abstract datentyp methodenName(arg1, arg2, ...);
+```
+
+# Regeln
+* Ein Interface kann ***KEINE*** Instanz-Attribute definieren.
+* Die einzigen Attribute, die in einem Interface erlaubt sind, sind die Klassen-Attribute (Müssen `static` sein).
+* Die Attribute werden, auch wenn sie nicht als solche deklariert sind - als `final` behandelt.
+* Ein Interface enthält keinerlei Implementation, daher wird der Methoden-Rumpf durch ein Semikolon ersetzt.
+* Der Modifikator `abstract` muss nicht angegeben werden, da alle Methoden eines Interfaces implizit abstrakt
+* Alle Methoden sind implizit `public`, der Modifikator `public` muss **nicht** angegeben werden. Es ist ein Fehler, eine Methode eines Interface als `protected` oder `private` zu definieren.
+* Ein Interface kann nicht instanziiert werden und definiert deswegen auch **KEINEN** Konstruktor.
+
+# Implementierung von Interfaces
+Für die Implementierung eines Interface wird das Schlüsselwort `implements` verwendet. Eine Klasse kann auch mehrere Interfaces implementieren. Eine Implements klausel, steht in einer Klassendeklaration immer **NACH** der `extends` Klausel. 
+
+*Bsp:*
+```java
+public class Klasse1 implements abc {}
+public class Klasse2 extends Klasse1 implements abc {}
+```
+
+Gegeben sei das Interface *Fahrzeug* und die Klasse *Auto* die dieses implementiert.
+```java
+// Interface
+public interface Fahrzeug {
+    boolean istFahrzeug = true;
+
+    void Fahren();
+    void AendereFarbe(Color x);
+}
+
+// Klasse
+public class Auto implements Fahrzeug {
+    public Auto() {
+    }
+
+    private Color autoFarbe = Gruen;
+
+    public void Fahren() {
+        System.out.println("Brumm Brumm");
+    }
+
+    public void AendereFarbe(Color x) {
+        this.autoFarbe = x;
+    }
+}
+```
+

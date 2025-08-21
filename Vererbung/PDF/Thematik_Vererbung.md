@@ -66,7 +66,192 @@ public class Vererbung {
 Vererbung ist nicht auf zwei Klassen begrenzt. Theoretisch ist auch eine Vererbungskette wie folgend aussehen: Arzt <- Hausarzt <- NotdienstHausarzt 
 
 ### Vererbung in Java
+#### Definition
+**Klassenkopf**
+Der Klassenkopf gibt an, von wo man eine Klasse benutzen darf, den Namen der Klasse und ob die Klasse von anderen Klassen erbt und die Klasse vorgegebene Schnittstellen erfüllt. 
+
+Beispiele für Klassen wären:
+```java
+// Klasse ist von außerhalb möglich
+public class Arzt {}
+public class Hausarzt extends Arzt {}
+
+// Klassen können auch den Klassenkopf private oder protected haben
+
+// Klasse ist von außerhalb nicht sichtbar
+private class Arzt {}
+// Klasse ist von außeralb nicht sichtbar
+protected class Hausarzt {} 
+```
+
+Der Begriff **extends** wird im Klassenkopf verwendet um die Klasse anzugeben, von welcher die Eigenschaften (Variablen) und Methoden geerbt werden. (Wie oben genannt nur von einer Klasse. **Einfachvererbung!**)
+
+Mit extends darf:
+- darf nur **eine** Klasse angegeben werden 
+- die auch abstract sein kann 
+- aber nicht als **final** definiert sein darf
+```java
+// Diese Klasse, als Beispiel, darf nicht abgleitet werden. Verantwortlich dafür ist das Final.
+public final class Patient {} 
+```
+
+#### Erreichbarkeit & Sichtbarkeit
 
 
+**Klassenmember (static):** 
+**Definition:** Variablen und Methoden die zur Klasse selbst gehören, nicht zu einer Instanz (Object) gehören.
+**Zugriff:** Findet über die Klasse selbst statt (Arzt.variable oder Arzt.methode()). 
+
+
+**Instanzmember (non static):**
+**Definition:** Variablen und Methoden die zu einer Instanz (Object) gehören. 
+**Zugriff:** Findet über Object.variable oder Object.methode() statt.
+Jede Instanz erhält eigene Werte dieser Variablen.
+ 
+
+**Abgeleitete Klassen**
+Erben **keine** Klassen-Attribute und Instanz-Methoden ihrer Oberklasse. (static)
+Erben **alle** Instanz-Attribute und Instanz-Methoden ihrer Oberklasse. (non static)
+Dabei Erben abgeleitete Klassen aber auch nur die **erreichbaren** Instanz-Attribute und Instanz-Methoden ihrer Oberklasse. (static)
+
+
+**public, protected, private**
+Bei public und protected, sind bei der Vererbung die Attribute (Variablen) und Methoden immer zugänglich. Wenn ein private Member (Variable oder Methode) zur Verfügung stehen soll, muss dieser zu protected umdefiniert werden. Das Geheimnisprinzip hat damit keine Probleme, **trotzdem** muss Setter und Getter vorhanden sein.
+
+Private Attribute und Methoden sind nur in der eigenen Klasse erreichbar. Nur über Setter und Getter. 
+
+
+#### Verdecken & Überschreiben von Membern
+Verdeckte Attribute sind Attribute einer Oberklasse, die durch die abgeleitete Klasse neu deklariert werden. 
+```java 
+public class Arzt {
+    public static final String H = "HNO-Arzt";
+    protected int alter; 
+}
+
+public class Hausarzt extends Arzt {
+    public static final String H = "Hausarzt";
+    protected int alter;
+
+    public void geburtstagHaben() {
+        alter++;
+    }
+}
+```
+Im Beispiel verdeckt das Klassenattribut "H" von Hausarzt das Klassenattribut von Arzt. Selbes gilt für alter. 
+
+Attribute heißen verdeckt, da in der abgeleiteten Klasse das eigene Attribut das weiter oben (in der Oberklasse) definierte Attribut unsichtbar macht.
+
+```java 
+public class Arzt {
+    public static final String H = "HNO-Arzt";
+    protected int alter; 
+}
+
+public class Hausarzt extends Arzt {
+    public static final String H = "Hausarzt";
+    protected int alter;
+
+    public void geburtstagHaben() {
+        super.alter++;
+    }
+}
+```
+Wenn man trotzdem auf das Attribut von Arzt zugreifen möchte, macht man das mittels **super**.
+**super** verweist direkt auf die Oberklasse und ist vergleichbar mit this. Auch hier gilt. Das Attribut aus der Oberklasse muss erreichbar sein. 
+
+```java 
+public class Arzt {
+    public static final String H = "HNO-Arzt";
+    protected int alter; 
+}
+
+public class Hausarzt extends Arzt {
+    public static final String H = "Hausarzt";
+    protected int alter;
+
+    public void geburtstagHaben() {
+        ((Arzt)this).alter++;
+    }
+}
+```
+Mittels Casting kann man auch auf Verdeckte Attribute zugreifen. Dafür muss man ((Klassentyp)this).Attribut verwenden. Damit kann man auch auf weiter entfernte Attribute zugreifen. 
+
+#### Überschreiben von Instanz-Methoden
+```java 
+public class Arzt {
+    public void patientBehandeln() {
+        // behandle immer Konservativ
+    }
+}
+public class Chirurg extends Arzt {
+    public void patientBehandeln() {
+        // andere Behandlungsmethode
+    }
+}
+```
+Überschriebene Methoden definieren eine geerbte Methode in der Klasse neu. Diese **müssen** den gleichen Namen, Parameter und Rückgabetyp haben. In der Sichtbarkeit darf nur vergrößert werden und nicht verringert. 
+
+#### Typsicherheit beim Überschreiben
+Invarianz, Kovarianz, Kontravarianz
+
+Invarianz: Der Typ muss genau gleich übereinstimmen.   
+```java 
+class Arzt {}
+class Hausarzt extends Arzt {}
+
+public class Klinik {
+    Arzt arzt; // invarianter Typ
+
+    public void setArzt(Arzt arzt) {
+        this.arzt = arzt; // nur Arzt erlaubt
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Klinik klinik = new Klinik();
+        Hausarzt hausarzt = new Hausarzt();
+    }
+}
+```
+Kovarianz: Der Typ kann ein Untertyp sein als erwartet.
+```java 
+class Arzt {}
+class Hausarzt extends Arzt {}
+
+class Klinik {
+    public Arzt getArzt() {
+        return new Arzt();
+    }
+}
+
+class HausarztKlinik extends Klinik {
+    @Override
+    public Hausarzt getArzt() { // Kovarianz: Rückgabetyp ist Untertyp
+        return new Hausarzt();
+    }
+}
+```
+Kontravarianz: Der Typ kann ein Obertyp sein als erwartet.
+```java 
+class Arzt {}
+class Hausarzt extends Arzt {}
+
+class Klinik {
+    public Arzt getArzt() {
+        return new Arzt();
+    }
+}
+
+class HausarztKlinik extends Klinik {
+    @Override
+    public Hausarzt getArzt() { // Kovarianz: Rückgabetyp ist Untertyp
+        return new Hausarzt();
+    }
+}
+```
+
+Zusammenfassung in der pptx: PII_03_Vererbung.pdf auf Seite 36.
 
 ### Vererbung bei der Modellierung
