@@ -255,7 +255,25 @@ class HausarztKlinik extends Klinik {
 Zusammenfassung in der pptx: PII_03_Vererbung.pdf auf Seite 36.
 
 #### Konstruktoren
-In einer Unterklasse kann man den Initialisierungskonstruktor der Oberklasse aufrufen. Das passiert
+In einer Unterklasse kann man den Initialisierungskonstruktor der Oberklasse aufrufen. Das passiert mittels **super()**. Dieser Aufruf muss im Initialisierungskonstruktor am anfang stehen. Das könnte z. B. so aussehen: 
+```java 
+public class Arzt {
+    protected boolean arbeitetImKrankenhaus;
+
+    public Arzt (boolean krankenhaus) {
+        this.arbeitetImKrankenhaus = krankenhaus;
+    }
+}
+
+public class Hausarzt extends Arzt {
+    protected boolean machtHausbesuche; 
+
+    public Hausarzt (boolean krankenhaus, boolean hausbesuche) {
+        super(krankenhaus);
+        this.machtHausbesuche = hausbesuche; 
+    }
+}
+```
 
 ### Vererbung bei der Modellierung
 
