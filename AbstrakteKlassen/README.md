@@ -1,9 +1,9 @@
 # Abstrakte Klassen
 
 ## Was ist abstract
-- Das Schlüsselwort `abstract` ist ein Modifikator für Klassen und Methoden, genauer geasagt ein **Nicht-Zugriffsmodifikator**.
+- Das Schlüsselwort `abstract` ist ein Modifikator für Klassen und Methoden, genauer gesagt ein **Nicht-Zugriffsmodifikator**.
 
-- `abstract` macht aus einer [**concrete Class** - "nomrale" Klasse] &rarr; eine [**abstract Class** - abstrakte Klasse].
+- `abstract` macht aus einer [**concrete Class** - "normale" Klasse] &rarr; eine [**abstract Class** - abstrakte Klasse].
 
 
 ## Abstrakte Klasse
@@ -17,8 +17,28 @@ Eine Klasse, die mit dem Schlüsselwort abstract deklariert wird:
     - Normale (konkrete) Methoden besitzen einen vollständigen Methodenrumpf (Implementierung). Wenn eine Klasse diese Methoden an eine Unterklasse vererbt, kann diese die Methode nutzen, wie sie ist, oder sie überschreiben, um ihr Verhalten anzupassen.
 
 - `abstracte` Methode:
-    - Besitzt keine Implementierung (Methoden-Inhalt) &rarr; werden nicht befüllt und besitzen auch keine `{}`.
-    - Muss von Unerklassen implementiert werden.
-    - 
+    - Besitzt keine Implementierung (Methoden-Inhalt) &rarr; werden nicht befüllt und besitzen kein `{}`.
+    - Muss von Unterklassen implementiert werden.
+
+- `concrete`Methoden:
+    - Werden normal vererbt.
+    
+```Java
+public abstract class Animal {
+    int age;
+    String name;
+
+    //abstracte Methode, die in Unterklassen implementiert werden müssen
+    public abstract void makeNoise();
+    //keine {} nach der Methode
+
+    //konkrete Methode, die normal vererbt wird
+    public void eat(){
+        System.out.println("munch munch");
+    };
+}
+```
+
+
 
 
