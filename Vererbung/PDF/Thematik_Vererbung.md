@@ -276,4 +276,14 @@ public class Hausarzt extends Arzt {
 ```
 
 ### Vererbung bei der Modellierung
-
+Man muss durch folgende Schritte gehen: 
+- 0. Modelliere Gegenstände, Lebewesen, ... als Klassen 
+- 1. Finde Klassen mit gleichen Eigenschaften und Verhalten 
+    - Ziel ist es eine Oberklasse zu finden
+- 2. Modelliere eine Oberklasse mit diesen Eigenschaften (Attribute) und Verhalten (Methoden)
+- 3. Entscheide, ob abgeleitete Klassen weitere Eigenschaften haben
+    - Ergänze Unterklassen mit Eigenschaften die nicht in der Oberklasse gegeben sind
+- 4. Entscheide, ob abgeleitete Klassen spezifisches Verhalten haben
+    - Ergänze Unterklassen mit Verhalten die nicht in der Oberklasse gegeben ist
+- 5. Finde abgeleitete Klasse mit spezifischen gleichen Eigenschaften / Verhalten  
+    - Ergänze weitere Klassen in der Vererbungshierarchie 
