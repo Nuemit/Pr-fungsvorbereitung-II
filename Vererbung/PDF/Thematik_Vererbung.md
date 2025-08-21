@@ -24,7 +24,7 @@ public class Arzt {
 }
 ```
 
-**Folgerung 2:** Wenn Y die **Verhaltensweisen (Methoden)** a(), b(), c() aufweist. Hat auch X diese Verhaltensweisen. (Beispiele folgen)
+**Folgerung 2:** Wenn Y die **Verhaltensweisen (Methoden)** patientenBehandeln(), diagnoseStellen(), medikamenteVerschreiben() aufweist. Hat auch X diese Verhaltensweisen. (Beispiele folgen)
 
 ```java
 //Klassenkopf kann voerst Ignoriert werden
@@ -56,9 +56,9 @@ public class Vererbung {
 ```
 
 
-**Grundlage des Prinzips der Vererbung:** Ist die Beobachtung das **ZWEI** Klassen X und Y beide Folgerungen und somit "Jedes X ist auch ein Y" ausweisen können. 
+**Grundlage des Prinzips der Vererbung:** Ist die Beobachtung das **ZWEI** Klassen X (Hausarzt) und Y (Arzt) beide Folgerungen und somit "Jedes X (Hausarzt) ist auch ein Y (Arzt)" ausweisen können. 
 
-**Ober-/Unterklasse:** Ganz nach dem Satz "Jedes X ist auch ein Y", wird X die Variablen und Methoden von Y besitzen. Somit ist X eine **Unterklasse** und da Y die Variablen und Methoden weitergibt, die **Oberklasse** in dieser Konstellation.
+**Ober-/Unterklasse:** Ganz nach dem Satz "Jedes X (Hausarzt) ist auch ein Y (Arzt)", wird X (Hausarzt) die Variablen und Methoden von Y (Arzt) besitzen. Somit ist X (Hausarzt) eine **Unterklasse** und da Y (Arzt) die Variablen und Methoden weitergibt, die **Oberklasse** in dieser Konstellation.
 
 
 ### Vererbung in Java
