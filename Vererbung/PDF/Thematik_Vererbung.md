@@ -2,7 +2,7 @@
 ### Begriffsbestimmung
 Vererbung basiert auf den Folgerungen daraus, das ein Hausarzt auch ein Arzt ist. 
 
-**Folgerung 1:** Das heißt wenn der Arzt über die **Eigenschaften (Variablen)** arbeitetImKrankenhaus, b, c beschrieben werden kann, kann X auch über diese Eigenschaften beschrieben werden.
+**Folgerung 1:** Das heißt wenn der Arzt über die **Eigenschaften (Variablen)** arbeitetImKrankenhaus, machtForschung, hatFachrichtung beschrieben werden kann, kann X auch über diese Eigenschaften beschrieben werden.
 
 ```java
 // Klassenkopf kann vorerst Ignoriert werden
@@ -12,11 +12,15 @@ public class Hausarzt extends Arzt {
 
     // Hausarzt hat mit "this" die Eigenschaft von Arzt benutzt
     this.arbeitetImKrankenhaus;
+    this.machtForschung;
+    this.hatFachrichtung;
 }
 
 public class Arzt {
     // Eigenschaft / Variable die der Arzt besitzt
     public boolean arbeitetImKrankenhaus;
+    public boolean machtForschung;
+    public boolean hatFachrichtung;
 }
 ```
 
@@ -26,16 +30,14 @@ public class Arzt {
 //Klassenkopf kann voerst Ignoriert werden
 public class Hausarzt extends Arzt {
     // Verhaltensweise / Methode von Hausarzt
-    public void patientBeraten() {
-    //Inhalt    
-    }
+    public void patientBeraten() {} 
 }
 
 public class Arzt {
     // Verhaltensweise / Methode von Arzt
-    public void patientBehandeln() {
-        //Inhalt
-    }
+    public void patientBehandeln() {}
+    public void diagnoseStellen() {}
+    public void medikamentVerschreiben() {}
 }
 
 public class Vererbung {
