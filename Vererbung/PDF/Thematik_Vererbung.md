@@ -2,7 +2,7 @@
 ### Begriffsbestimmung
 Vererbung basiert auf den Folgerungen daraus, das ein Hausarzt auch ein Arzt ist. 
 
-**Folgerung 1:** Das heißt wenn der Arzt über die **Eigenschaften (Variablen)** arbeitetImKrankenhaus, machtForschung, hatFachrichtung beschrieben werden kann, kann X auch über diese Eigenschaften beschrieben werden.
+**Folgerung 1:** Das heißt wenn der Arzt über die **Eigenschaften (Variablen)** arbeitetImKrankenhaus, machtForschung, hatFachrichtung beschrieben werden kann, kann Hausarzt auch über diese Eigenschaften beschrieben werden.
 
 ```java
 // Klassenkopf kann vorerst Ignoriert werden
@@ -24,7 +24,7 @@ public class Arzt {
 }
 ```
 
-**Folgerung 2:** Wenn Y die **Verhaltensweisen (Methoden)** patientenBehandeln(), diagnoseStellen(), medikamenteVerschreiben() aufweist. Hat auch X diese Verhaltensweisen. (Beispiele folgen)
+**Folgerung 2:** Wenn Arzt die **Verhaltensweisen (Methoden)** patientenBehandeln(), diagnoseStellen(), medikamenteVerschreiben() aufweist. Hat auch Hausarzt diese Verhaltensweisen. (Beispiele folgen)
 
 ```java
 //Klassenkopf kann voerst Ignoriert werden
@@ -254,4 +254,36 @@ class HausarztKlinik extends Klinik {
 
 Zusammenfassung in der pptx: PII_03_Vererbung.pdf auf Seite 36.
 
+#### Konstruktoren
+In einer Unterklasse kann man den Initialisierungskonstruktor der Oberklasse aufrufen. Das passiert mittels **super()**. Dieser Aufruf muss im Initialisierungskonstruktor am anfang stehen. Das könnte z. B. so aussehen: 
+```java 
+public class Arzt {
+    protected boolean arbeitetImKrankenhaus;
+
+    public Arzt (boolean krankenhaus) {
+        this.arbeitetImKrankenhaus = krankenhaus;
+    }
+}
+
+public class Hausarzt extends Arzt {
+    protected boolean machtHausbesuche; 
+
+    public Hausarzt (boolean krankenhaus, boolean hausbesuche) {
+        super(krankenhaus);
+        this.machtHausbesuche = hausbesuche; 
+    }
+}
+```
+
 ### Vererbung bei der Modellierung
+Man muss durch folgende Schritte gehen: 
+- 0. Modelliere Gegenstände, Lebewesen, ... als Klassen 
+- 1. Finde Klassen mit gleichen Eigenschaften und Verhalten 
+    - Ziel ist es eine Oberklasse zu finden
+- 2. Modelliere eine Oberklasse mit diesen Eigenschaften (Attribute) und Verhalten (Methoden)
+- 3. Entscheide, ob abgeleitete Klassen weitere Eigenschaften haben
+    - Ergänze Unterklassen mit Eigenschaften die nicht in der Oberklasse gegeben sind
+- 4. Entscheide, ob abgeleitete Klassen spezifisches Verhalten haben
+    - Ergänze Unterklassen mit Verhalten die nicht in der Oberklasse gegeben ist
+- 5. Finde abgeleitete Klasse mit spezifischen gleichen Eigenschaften / Verhalten  
+    - Ergänze weitere Klassen in der Vererbungshierarchie 
