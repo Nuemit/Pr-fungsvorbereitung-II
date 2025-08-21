@@ -254,4 +254,8 @@ class HausarztKlinik extends Klinik {
 
 Zusammenfassung in der pptx: PII_03_Vererbung.pdf auf Seite 36.
 
+#### Konstruktoren
+In einer Unterklasse kann man den Initialisierungskonstruktor der Oberklasse aufrufen. Das passiert
+
 ### Vererbung bei der Modellierung
+
