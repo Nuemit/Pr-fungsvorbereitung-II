@@ -58,7 +58,7 @@ public class Vererbung {
 
 **Grundlage des Prinzips der Vererbung:** Ist die Beobachtung das **ZWEI** Klassen X (Hausarzt) und Y (Arzt) beide Folgerungen und somit "Jedes X (Hausarzt) ist auch ein Y (Arzt)" ausweisen können. 
 
-**Ober-/Unterklasse:** Ganz nach dem Satz "Jedes X (Hausarzt) ist auch ein Y (Arzt)", wird X (Hausarzt) die Variablen und Methoden von Y (Arzt) besitzen. Somit ist X (Hausarzt) eine **Unterklasse** und da Y (Arzt) die Variablen und Methoden weitergibt, die **Oberklasse** in dieser Konstellation.
+**Ober-/Unterklasse:** Ganz nach dem Satz "Jedes X (Hausarzt) ist auch ein Y (Arzt)", so wird X (Hausarzt) die Variablen und Methoden von Y (Arzt) besitzen. Somit ist X (Hausarzt) eine **Unterklasse** und da Y (Arzt) die Variablen und Methoden weitergibt, die **Oberklasse** in dieser Konstellation.
 
 
 **Einfach-/Mehrfachvererbung:** In Java ist es über den oben gezeigten Weg möglich zwischen zwei Klassen **einfach** zu vererben. Mehrfachvererbung ist über diesen Weg **nicht** möglich.
@@ -110,9 +110,9 @@ Jede Instanz erhält eigene Werte dieser Variablen.
  
 
 **Abgeleitete Klassen**
-Erben **keine** Klassen-Attribute und Instanz-Methoden ihrer Oberklasse. (static)
-Erben **alle** Instanz-Attribute und Instanz-Methoden ihrer Oberklasse. (non static)
-Dabei Erben abgeleitete Klassen aber auch nur die **erreichbaren** Instanz-Attribute und Instanz-Methoden ihrer Oberklasse. (static)
+* Erben **keine** Klassen-Attribute und Instanz-Methoden ihrer Oberklasse. (static)
+* Erben **alle** Instanz-Attribute und Instanz-Methoden ihrer Oberklasse. (non static)
+* Dabei Erben abgeleitete Klassen aber auch nur die **erreichbaren** Instanz-Attribute und Instanz-Methoden ihrer Oberklasse. (static)
 
 
 **public, protected, private**
@@ -215,7 +215,7 @@ public class Main {
     }
 }
 ```
-Kovarianz: Der Typ kann ein Untertyp sein als erwartet.
+Kovarianz: Der Typ kann ein Untertyp der Oberklasse sein, solange die Unterklasse eine Klasse des Ursprünglichen Typs ist.
 ```java 
 class Arzt {}
 class Hausarzt extends Arzt {}
@@ -233,7 +233,7 @@ class HausarztKlinik extends Klinik {
     }
 }
 ```
-Kontravarianz: Der Typ kann ein Obertyp sein als erwartet.
+Kontravarianz: Der Typ kann die Oberklasse des Datentyps sein.
 ```java 
 class Arzt {}
 class Hausarzt extends Arzt {}
@@ -246,8 +246,8 @@ class Klinik {
 
 class HausarztKlinik extends Klinik {
     @Override
-    public Hausarzt getArzt() { // Kovarianz: Rückgabetyp ist Untertyp
-        return new Hausarzt();
+    public Hausarzt getArzt() { // Kovarianz: Rückgabetyp ist 
+        return new Arzt();
     }
 }
 ```
