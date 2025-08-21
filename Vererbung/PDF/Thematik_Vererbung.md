@@ -2,7 +2,7 @@
 ### Begriffsbestimmung
 Vererbung basiert auf den Folgerungen daraus, das ein Hausarzt auch ein Arzt ist. 
 
-**Folgerung 1:** Das heißt wenn der Arzt über die **Eigenschaften (Variablen)** arbeitetImKrankenhaus, machtForschung, hatFachrichtung beschrieben werden kann, kann X auch über diese Eigenschaften beschrieben werden.
+**Folgerung 1:** Das heißt wenn der Arzt über die **Eigenschaften (Variablen)** arbeitetImKrankenhaus, machtForschung, hatFachrichtung beschrieben werden kann, kann Hausarzt auch über diese Eigenschaften beschrieben werden.
 
 ```java
 // Klassenkopf kann vorerst Ignoriert werden
@@ -24,7 +24,7 @@ public class Arzt {
 }
 ```
 
-**Folgerung 2:** Wenn Y die **Verhaltensweisen (Methoden)** patientenBehandeln(), diagnoseStellen(), medikamenteVerschreiben() aufweist. Hat auch X diese Verhaltensweisen. (Beispiele folgen)
+**Folgerung 2:** Wenn Arzt die **Verhaltensweisen (Methoden)** patientenBehandeln(), diagnoseStellen(), medikamenteVerschreiben() aufweist. Hat auch Hausarzt diese Verhaltensweisen. (Beispiele folgen)
 
 ```java
 //Klassenkopf kann voerst Ignoriert werden
