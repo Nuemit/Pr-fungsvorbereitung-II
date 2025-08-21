@@ -66,6 +66,45 @@ public class Vererbung {
 Vererbung ist nicht auf zwei Klassen begrenzt. Theoretisch ist auch eine Vererbungskette wie folgend aussehen: Arzt <- Hausarzt <- NotdienstHausarzt 
 
 ### Vererbung in Java
+#### Definition
+**Klassenkopf**
+Der Klassenkopf gibt an, von wo man eine Klasse benutzen darf, den Namen der Klasse und ob die Klasse von anderen Klassen erbt und die Klasse vorgegebene Schnittstellen erfüllt. 
+
+Beispiele für Klassen wären:
+```java
+// Klasse ist von außerhalb möglich
+public class Arzt {}
+public class Hausarzt extends Arzt {}
+
+// Klassen können auch den Klassenkopf private oder protected haben
+
+// Klasse ist von außerhalb nicht sichtbar
+private class Arzt {}
+// Klasse ist von außeralb nicht sichtbar
+protected class Hausarzt {} 
+```
+
+Der Begriff **extends** wird im Klassenkopf verwendet um die Klasse anzugeben, von welcher die Eigenschaften (Variablen) und Methoden geerbt werden. (Wie oben genannt nur von einer Klasse. **Einfachvererbung!**)
+
+Mit extends darf:
+- darf nur **eine** Klasse angegeben werden 
+- die auch abstract sein kann 
+- aber nicht als **final** definiert sein darf
+```java
+// Diese Klasse, als Beispiel, darf nicht abgleitet werden. Verantwortlich dafür ist das Final.
+public final class Patient {} 
+```
+
+#### Erreichbarkeit & Sichtbarkeit
+
+**Klassenmember (static):** 
+**Definition:** Variablen und Methoden die zur Klasse selbst gehören, nicht zu einer Instanz (Object) gehören.
+**Zugriff:** Findet über die Klasse selbst statt (Arzt.variable oder Arzt.methode()). 
+**Instanzmember (non static):**
+**Definition:** Variablen und Methoden die zu einer Instanz (Object) gehören. 
+**Zugriff:** Findet über Object.variable oder Object.methode() statt.
+Jede Instanz erhält eigene Werte dieser Variablen.
+ 
 
 
 
