@@ -85,6 +85,19 @@ public class MainAbstractClasses {
 }
 ```
 
+## Prog Fragen
+
+1. Was bedeutet Polymorphie?
+    - siehe 
+2. Was muss bei der Konvertierung von Referenzvariablen beachtet werden?
+3. Können Referenzvariablen in einfache Datentypen konvertiert werden?
+4. Können einfache Datentypen in Java in Referenzvariablen konvertiert werden?
+5. Welche Rolle spielt die Klasse Object in Java?
+6. Was ist eine abstrakte Methode?
+7. Was sind die Eigenschaften von abstrakten Klassen?
+8. Benötigt eine abstrakte Klasse eine abstrakte Methode und warum ist das so?
+
+
 
 
 ## Notizen
