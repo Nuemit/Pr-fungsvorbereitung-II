@@ -18,7 +18,21 @@ Eine Klasse, die mit dem Schlüsselwort abstract deklariert wird:
         - Muss von Unterklassen implementiert werden.
 
     - `concrete`Methoden:
-        - Werden normal vererbt.  
+        - Werden normal vererbt. 
+
+## Unterschiede zu Interfaces:
+
+1. **Implementierung von Methoden**
+
+- Ein Interface darf keine Implementierung für Methoden enthalten (außer default und static Methoden). Es definiert ausschließlich Methoden-Signaturen.  
+
+- Klassen, die ein Interface implementieren, müssen jede dieser Methoden selbst implementieren.
+
+- Eine abstrakte Klasse kann sowohl abstrakte Methoden (ohne Implementierung) als auch konkrete Methoden (mit Implementierung) enthalten.
+
+2. **Mehrfache Vererbung**
+
+- Ein Interface ermöglicht Mehrfachvererbung. Eine Klasse kann beliebig viele Interfaces implementieren (implements InterfaceA, InterfaceB, InterfaceC). Dies ist die Hauptmethode, um in Java Polymorphie zu erreichen, da Java keine Mehrfachvererbung von Klassen erlaubt. Eine Klasse kann nur von einer einzigen abstrakten Klasse erben.
   
 
 ## Beispiel Code
@@ -54,36 +68,18 @@ public  class Cat extends Animal{
 }
 ```
 
-
+Code 1.2 zeigt die Main in der Cat initialisiert wird und ihre Methoden anwendet.
 
 ```Java
-//Code 1.2
+//Code 1.2 
 public class MainAbstractClasses {
     public static void main(String[] args) {
 
-        /*
-        Wenn eine Class abstract ist, kann man kein Objekt daraus erzeugen
-        ABER man kann SubClasses von dieser Class erstellen
+        Cat myCat = new Cat(); 
 
-        Animal myAnimal = new Animal() somit nicht
+        myCat.makeNoise(); //"meow"
 
-        SubClasses müssen Methoden der abstract MAinClass implementieren
-         */
-
-        //MainClass Animal ist abstract
-        Cat myCat = new Cat(); //Cat extends Animal
-
-        //erzwungene Methode der SubClass durch die abstract MainClass
-        myCat.makeNoise();
-
-        /*
-        Unterschiede zu Interfaces:
-        Interfaces besitzen auch abstract Methods, können aber mehrfach vererbt werden
-        man nutz abstract Class, um ein Gerüst zu bauen
-
-         */
-
-        myCat.eat();
+        myCat.eat(); //"munch munch"
 
     }
 }
