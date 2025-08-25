@@ -313,3 +313,22 @@ button.addActionListener(e -> {
     System.out.println("Button wurde geklickt!");
 });
 ```
+
+***Wie und wann können wir Lambda-Ausdrücke nun verwenden?***
+Wir Können Lambda-Ausdrücke immer dann anwenden, wenn eine Methode eine Instanz eines funktionalen Interfaces als Argument erwartet.
+Beispiele dafür sind:
+- `java.lang.Runnable`: hat die Methode `run()`.
+  - `System.out.println("Ich Laufe!");`
+- `java.util.Comparator<T>`: hat die Methode `compare(T o1, T o2)`
+  - `(s1, s2) -> s1.length() - s2.length()`
+- `java.util.function.Consumer<T>`: hat die Methode `accept(T t)`
+  - `liste.forEach(name -> System.out.println(name))`
+
+## Die vorteile von Lambda:
+- Kürzerer Code: Reduziert die Menge an Boilerplate-Code, die für anonyme Klassen benötigt wird.
+
+- Verbesserte Lesbarkeit: Macht die Absicht des Codes klarer, da der Fokus auf dem liegt, was die Methode tut, und nicht auf der Deklaration einer Klasse.
+
+- Integration in Streams API: Lambda-Ausdrücke sind die Grundlage für die funktionale Programmierung in Java, insbesondere für die Stream-API, die das Verarbeiten von Sammlungen vereinfacht.
+
+Lambda-Ausdrücke haben die Art und Weise, wie Java-Entwickler mit bestimmten Interfaces umgehen, grundlegend verändert und sind heute ein unverzichtbarer Teil der Sprache.
