@@ -82,3 +82,9 @@ public class Auto implements Fahrzeug {
 }
 ```
 
+# Interfaces in UML
+Interfaces werden in UML durch einen Kursiven Schriftzug und die Angabe des Stereotyps (interface) gekennzeichnet. Implementierungen von Interfaces werden durch einen Pfeil mit weißer Spitze dargestellt, wobei die Pfeillinie gestrichelt dargestellt wird.
+
+![Interface Implementation in UML](Interface_UML.png)
+
+# Top-Level Klassen und Innere Klassen
