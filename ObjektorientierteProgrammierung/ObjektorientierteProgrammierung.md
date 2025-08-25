@@ -34,15 +34,70 @@ Primitive Datentypen und ihre dazugehörigen Wrapperklassen sind:
 |---------------------------|---------------|
 | byte                      | Byte          |
 | short                     | Short         |
-| int                       | Int           |
+| int                       | Integer       |
 | long                      | Long          |
 | float                     | Float         |
 | double                    | Double        |
-| char                      | Char          |
+| char                      | Character     |
 | boolean                   | Boolean       |
 
+Warum braucht man soetwas wie Wrapper-Klassen?
+Es gibt in Java Collections. Diese können nur mit Objecten Arbeiten. Um dennoch mit den Collections arbeiten zu können sind diese Wrapper-Klassen da. Diese machen den Primitiven Datentyp in ein Objekt. 
+
+Wie man ein int in ein Int "umwandelt".
+```java
+public class Main {
+    public static void main (String Args[]) {
+        // primitiver Datentyp 
+        int zahl = 5;
 
 
+        // Wrapper-Klasse (Objekt)
+        Integer zahlObjekt = Integer.valueOf(zahl);
+
+
+        // Ausgabe im Terminal
+        System.out.println("Primitivezahl: " + zahl); 
+        // Ausgabe: Primitivezahl 5
+        System.out.println("Wrapper: " + zahlObjekt.toString())
+        // Ausgabe: Wrapper 5 
+    }
+}
+```
+
+Zusammenfassung: 
+- Ein Objekt ist eine Instanz einer Klasse
+- Wrapper-Klassen machen primitive Datentypen zu Objekten, damit sie in Collections gespeichert und mit Methoden bearbeitet werden können. 
+
+#### Aufzählungen - Enumerations
+- Primitive Datentypen
+    - können nur einzelne Werte Darstellen
+    - und keine Wertemengen
+- Aufzählungstypen
+    - fassen einzelne Werte unter einem Gesichtspunkt zusammen
+    - und dienen somit zur Definition von Wertemengen
+
+Beispiele für Aufzählungstypen wären:
+- Day
+    - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+- Monate
+    - Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember
+
+Um eine Aufzähöung umzusetzen nimmt man ein Interface.
+Das würde für Wochentage so aussehen: 
+```java 
+public interface Day {
+    public static final int MON  = 1;
+    public static final int TUE  = 2;
+    public static final int WEN  = 3;
+    public static final int THUR = 4;
+    public static final int FRI  = 5;
+    public static final int SAT  = 6;
+    public static final int SUN  = 0;
+}
+
+
+```
 
 
 ### Packages
