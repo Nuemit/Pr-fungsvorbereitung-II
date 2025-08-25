@@ -1,0 +1,228 @@
+# Interface - Definition
+Ein Interface in Java ist wie ein Bauplan für eine Klasse. Es definiert, was eine Klasse tun kann, aber nicht wie.
+
+Das Interface legt die Regeln fest, welche Methoden Implementiert werden müssen, aber nicht wie die Methoden funktionieren.
+
+Merke:
+* Ein Interface enthält nur Methoden-Signaturen (also den Namen, die Parameter und den Rückgabetyp). 
+* Es gibt keine Methodenrümpfe (code in geschweiften Klammern {}).
+* Eine Klasse, die ein Interface implementiert, ist dazu verpflichtet, alle Methoden die dieses Interfaces mit bringt, mit eigenem code auszuführen.
+
+## Interface-Kopf - Definition
+Ein Interface-Kopf deifiniert den Namen des Interfaces und eventuell Interfaces, deren Methoden-Definitionen und Konstanten dieses Interface erbt.
+
+```java
+public interface MyInterface extends Interface1, Interface2
+```
+
+## Interface-Rumpf - Definition
+Bei der Definition eines Interfaces, dürfen ausschließlich öffentliche konstante Klassenattribute und Methodenköpfe angegeben werden.
+
+**So ist ein beispiel für attribute**
+* [public] kann weg gelassen werden, es ist trotzdem public
+* [static] kann weg gelassen werden, es ist trotzdem static
+* [final] kann weg gelassen werden, es ist trotzdem final
+
+```java
+public static final datentyp attributname = literal;
+```
+
+**So ist ein beispiel für Methoden**
+
+* [public] kann weg gelassen werden, es ist trotzdem public
+* [abstract] kann weg gelassen werden, es ist trotzdem abstract
+
+```java
+public abstract datentyp methodenName(arg1, arg2, ...);
+```
+
+# Regeln
+* Ein Interface kann ***KEINE*** Instanz-Attribute definieren.
+* Die einzigen Attribute, die in einem Interface erlaubt sind, sind die Klassen-Attribute (Müssen `static` sein).
+* Die Attribute werden, auch wenn sie nicht als solche deklariert sind - als `final` behandelt.
+* Ein Interface enthält keinerlei Implementation, daher wird der Methoden-Rumpf durch ein Semikolon ersetzt.
+* Der Modifikator `abstract` muss nicht angegeben werden, da alle Methoden eines Interfaces implizit abstrakt
+* Alle Methoden sind implizit `public`, der Modifikator `public` muss **nicht** angegeben werden. Es ist ein Fehler, eine Methode eines Interface als `protected` oder `private` zu definieren.
+* Ein Interface kann nicht instanziiert werden und definiert deswegen auch **KEINEN** Konstruktor.
+
+# Implementierung von Interfaces
+Für die Implementierung eines Interface wird das Schlüsselwort `implements` verwendet. Eine Klasse kann auch mehrere Interfaces implementieren. Eine Implements klausel, steht in einer Klassendeklaration immer **NACH** der `extends` Klausel. 
+
+*Bsp:*
+```java
+public class Klasse1 implements abc {}
+public class Klasse2 extends Klasse1 implements abc {}
+```
+
+Gegeben sei das Interface *Fahrzeug* und die Klasse *Auto* die dieses implementiert.
+```java
+// Interface
+public interface Fahrzeug {
+    boolean istFahrzeug = true;
+
+    void Fahren();
+    void AendereFarbe(Color x);
+}
+
+// Klasse
+public class Auto implements Fahrzeug {
+    public Auto() {
+    }
+
+    private Color autoFarbe = Gruen;
+
+    public void Fahren() {
+        System.out.println("Brumm Brumm");
+    }
+
+    public void AendereFarbe(Color x) {
+        this.autoFarbe = x;
+    }
+}
+```
+
+# Interfaces in UML
+Interfaces werden in UML durch einen Kursiven Schriftzug und die Angabe des Stereotyps (interface) gekennzeichnet. Implementierungen von Interfaces werden durch einen Pfeil mit weißer Spitze dargestellt, wobei die Pfeillinie gestrichelt dargestellt wird.
+
+![Interface Implementation in UML](Interface_UML.png)
+
+# Top-Level Klassen und Innere Klassen
+Eine Datei kann mehr als eine Klasse haben, daher kommen die Begriffe Top und Innere Klassen zum einsatz.
+
+## Top Level klassen
+Eine Top Level Klasse ist eine normale Klasse, die direkt in einer `.java` datei deklariert wird. Sie ist nicht in einer anderen Klasse verschachtelt. Jede `.java` datei kann nur eine öffentliche TOP-Level-Klasse enthalten, deren Name mit dem Dateinamen übereinstimmen muss.
+
+So ist das Interface Tier, in seiner eigenen Datei
+**Tier.java**
+```java
+public interface Tier {
+    void macheGeräusch();
+}
+```
+
+Und die Top-Level-Klasse Hund auch.
+**Hund.java**
+```java
+public class Hund implements Tier {
+    @Override
+    public void macheGeräusch() {
+        System.out.println("Bark");
+    }
+}
+```
+
+## Innere Klasse
+Eine **innere Klasse** (manchmal auch gelesen als verschachtelte Klasse) ist eine Klasse, die innerhalb einer anderen Klasse deklariert wird. **Innere Klassen** können in Java als ***statische***, ***nicht statische***, ***lokale*** oder ***anonyme*** Klassen auftreten.
+
+Es gibt vier Typen von inneren Klassen:
+- Statische Member-Klassen (auch nested classes genannt oder geschachtelte Top-Level-Klassen)
+- Member-Klassen (auch Element-Klassen genannt oder **echte innere** Klassen) ***nicht-Statische***
+- Lokale Klassen
+- Anonyme Klassen
+
+Stellen wir uns vor, wir haben die Klasse `Garten`. Innerhalb dieses Gartens gibt es ein `Tier`-Objekt, das ein Geräusch machen kann. Die Logik für dieses Tier ist aber so spezifisch für den `Garten`, dass wir sie nicht als seperate Top-Level-Klasse definieren möchten.
+
+**Tier.java**
+```java
+public interface Tier {
+    void macheGeräusch();
+}
+```
+**Garten.java**
+```java
+public class Garten {
+    // Innere Klasse, die das Tier Interface implementiert.
+    private class GartenTier implements Tier {
+        @Override 
+        public void macheGeräusch() {
+            System.out.println("Bark");
+        }
+    }
+
+    public void starteKonzert() {
+        // Erstelle eine Instanz mit der Inneren Klasse
+        Tier meinTier = new GartenTier();
+        meinTier.macheGeräusch();
+    }
+}
+```
+
+Grundsätzlich gibt es die in der Tabelle gegebenen Unterschiede die es zu beachten gilt
+|Merkmal|Top-Level-Klasse|Innere-Klasse|
+|:---|:----|:----|
+|Zugriff| Öffentlich zugänglich (wenn `public`), kann von überall im Projekt verwendet werden.| Abhängig von der umschließenden Klasse; oft `private` und nur von dort aus zugänglich|
+|Verwendung|Für allgemeine, wiederverwendbare Implementierungen eines Interfaces| Für Implementierungen, die eng mit der Logik der umschließenden Klasse verbunden sind und anderswo nicht benötigt werden.|
+|Referenzierung| Deklariert in einer eigenen `.java` Datei.| Deklariert und existiert innerhalb einer anderen klasse.|
+
+## Member Klassen
+Um das Konzept einer Member Klasse zu verstehen nehmen wir uns ein Auto als Beispiel. Stellen wir uns also vor, dass ein Objekt mit dem Namen `Auto` ganz viele Teile hat. Zum Beispiel einen Motor, Reifen und Sitze. Diese Teile sind so eng mit dem `Auto` Objekt verbunden, dass es keinen Sinn ergibt, sie als völlig seperate Objekte zu definieren. diese Teile existieren in unserem Beispiel ja nur in Objekten des Typs `Auto`.
+
+Die Wichtigsten Eigenschaften sind:
+- Member Klassen sind Instanz-basiert. eine Member Klasse ist an eine Instanz der umschließenden Klasse gebunden.
+- Zugriff auf Mitglieder. Eine Member-klasse kann auf alle Mitglieder (Attribute und Methoden) der umschließenden Klasse zugreifen, auch auf die `private` mitglieder.
+- Nicht-Statisch. Sie können **nicht** mit dem Schlüsselwort `static` deklariert werden. Wenn sie statisch wären, wären sie statische verschachtelte Klassen, die sich anders verhalten.
+
+Ein Beispiel für solche Member klassen:
+**Auto.java** 
+```java
+// Die Top-Level-Klasse (im nachhinein Umschließende Klasse gennant)
+public class Auto {
+    
+    private String farbe;
+
+    public Auto (String farbe) {
+        this.farbe = farbe;
+    }
+
+    // Die Member-Klasse 'Motor'
+    public class Motor {
+        private String typ;
+        
+        public Motor(String typ) {
+            this.typ = typ;
+        }
+
+        public void starteMotor() {
+            // Die Member-Klasse hat direkten Zugriff auf 
+            // private Attribute der umschließenden klasse
+            System.out.println("Der %s Motor 
+                des Typs %s startet.".formatted(farbe + "e", typ));
+        }
+    }
+}
+```
+
+Im Hauptprogramm könnte es dann so aussehen:
+**Main.java**
+```java
+public class Main {
+    public static void main(String[] args) {
+        Auto meinAuto = new Auto("rot");
+
+        // Um ein Motor-Objekt zu erstellen, benötigen wir eine Instanz von Auto
+        Auto.Motor meinMotor = meinAuto.new Motor("V8");
+
+        meinMotor.stateMotor();
+    }
+}
+```
+Ausgabe:
+> Der rote Motor des Typs V8 statet.
+
+Beim kompilieren entsteht allerdings nicht eine Datei, sondern zwei dateien. Der Name der zweiten Datei setzt sich dann wie folgt zusammen: 
+`<name-der-toplevel-klasse>$<Name-der-inneren-klasse>.class`
+
+### Die Wichtigsten Informationen zusammenfassend:
+|Merkmal|Member-Klasse|
+|:---|:---|
+|Erstellung| Benötigt eine Instanz der Umschließenden Klasse|
+|Schlüsselwort| Kein `static`|
+|Zugriff| Zugriff auf alle (auch `private`) Mitglieder der Umschließenden Klassen|
+|Verwendung| Wenn die innere Klasse untrennbar mit der Instanz der umschließenden Klasse verbunden ist.|
+
+### Nutzung einer Member Klasse
+Die Objekte von Member-Klassen sind bei der Objekterzeugung außerhalb der Toplevel-Klasse mit einem Objekt der Toplevel-Klasse verbunden.
+
+Innerhalb der Toplevel-Klasse können direkt Objekte der Memberklasse erzeugt werden.
+
+# Beispiel Anonyme Klassen mit ActionListener
