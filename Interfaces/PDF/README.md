@@ -226,3 +226,90 @@ Die Objekte von Member-Klassen sind bei der Objekterzeugung außerhalb der Tople
 Innerhalb der Toplevel-Klasse können direkt Objekte der Memberklasse erzeugt werden.
 
 # Beispiel Anonyme Klassen mit ActionListener
+Eine Anonyme Klasse ist eine spezielle Art von innerer Klasse in Java, die keinen Namen hat und nur an der Stelle erstellt wird, an der sie benötigt wird. Sie wird verwendet um eine Klasse zu definieren und gleichzeitig eine einzelne Instanz davon zu erstellen. Man benutzt sie meistens um eine Methode eines Interfaces oder einer abstrakten Klasse zu überschreiben.
+
+Der Hauptgrund für Ihre verwendung ist, dass man eine sehr kleine, einmalige Implementierung einer Funktionalität braucht ohne dafür eine seperate benannte Klassendatei erstellen zu müssen. Das spart Code und mach ihn übersichtlicher, vor allem wenn es um Event Handling in Gui anwendungen geht!
+
+*Hier ist ein etwas ausführlicheres Beispiel, da diese form von Entwicklung Mehr Kontext braucht.*
+
+**ButtonBeispiel.java**
+```java
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+// Top-Level-Klasse
+public class ButtonBeispiel {
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Anonymes Beispiel");
+        JButton button = new JButton("Klick mich");
+
+        // Hier wird die Anonyme Klasse erstellt.
+        button.addActionListener(new ActionListener() {
+            // Die Methode des Interfaces wird direkt hier überschrieben.
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Button wurde geklickt!");
+            }
+        });
+
+        // Button mit Funktion wird der GUI hinzugefügt.
+        frame.add(button);
+    }
+}
+``` 
+
+Schauen wir uns mal an was in dem Beispiel Passiert.
+Codeblock: `new ActionListener() {...}`
+- Das `new ActionListener()` sieht aus, als würde ein `ActionListener`-Objekt erstellt werden, aber das ist nicht möglich, da `ActionListener` ein Interface ist und nicht direkt instanziiert werden kann.
+- Stattdessen bedeutet es: "Erstelle eine neue, **Namenlose** Klasse, die das ActionListener Interface implementiert.
+- Der nachfolgende geschweifte block `{...}` ist der Klassenkörper dieser **Anonymen** Klasse. Darin wird die methode `actionPerformed` überschrieben und die Gewünschte Funktionalität beschrieben.
+- Nach dem `}` wird die Instanz dieser Anonymen Klasse erstellt und an die `addActionListener`-Methode übergeben.
+
+## Die Wichtigsten Punkte zu Anonymen Klassen
+- Kein Name
+- Einmalige verwendung
+- Zugriff auf Lokale variablen - Sie können auf finale oder effektiv finale lokale Variablen der umschließenden Methode zugreifen.
+- Einschränkungen - Sie können keine Konstruktoren haben und nur eine Schnittstelle oder eine Abstrakte Klasse erweitern.
+
+
+# Lambda ausdrücke zur Implementierung von Interface
+Zitat: *"EDV-Systeme verarbeiten, womit sie gefüttert werden. Kommt Mist rein, komt Mist raus. ~André Kostolany (1906-1999)*
+
+Schnittstellen spielen in Java eine wichtige Rolle, weil sie eine API vorschreiben und ein Bindeglied zwischen der Implementierung und dem Aufrufer sind. Über ein Jahrzehnt boten nur Klassen einen Weg, Schnittstellen zu implementieren, doch ab Java 8 hat sich das für einige Schnittstellentypen verändert.
+
+Mit Lambda-Ausdrücken lässt sich Programmcode leichter an eine Methode übergeben, denn es gibt eine kompakte Syntax für die Implementierung von Schnittstellen mit einer Operation. Für unser Beispiel sieht das so aus:
+
+```java
+String[] words = {"M", "\nSkyfall", "Q", "\t\tAdele\t" };
+// Lambda  "->" wird angewandt
+Comparator<String> c = (String s1, String s2) -> {
+    return s1.trim().compareTo(s2.trim());
+    }
+
+Arrays.sort(words, c);
+System.out.println(Arrays.toString(words));
+```
+Der fett gesetzte Ausdruck nennt sich Lambda-Ausdruck. Er ist eine kompakte Art und Weise, Schnittstellen mit genau einer Methode zu implementieren: Die Schnittstelle Comparator hat genau eine Operation compare(…).
+
+Optisch sind sich ein Lambda-Ausdruck und eine Methodendeklaration ähnlich; was wegfällt, sind Modifizierer, der Rückgabetyp, der Methodenname und (mögliche) throws-Klauseln.
+![Methode und Lambda vergleich in einer Tabelle](vergleich_lambda-methode.png)
+*Quelle: Ullenboom, C. (n.d.). Lambda-Ausdrücke und funktionale Programmierung. © Rheinwerk Verlag GmbH, Bonn 2022. https://openbook.rheinwerk-verlag.de/javainsel/13_001.html*
+
+Mit diesem Wissen können wir uns ansehen wie das Beispiel mit `button` kürzer sein könnte.
+
+**Obiges beispiel ohne Lambda**
+```java
+button.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {           
+        System.out.println("Button wurde geklickt!");}
+    });
+```
+**Mit lambda**
+```java
+button.addActionListener(e -> {
+    System.out.println("Button wurde geklickt!");
+});
+```
