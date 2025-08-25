@@ -239,17 +239,18 @@ class Arzt {}
 class Hausarzt extends Arzt {}
 
 class Klinik {
-    public Arzt getArzt() {
-        return new Arzt();
+    public void behandeln(Arzt arzt) {
+        System.out.println("Behandle einen Arzt");
     }
 }
 
 class HausarztKlinik extends Klinik {
     @Override
-    public Hausarzt getArzt() { // Kovarianz: Rückgabetyp ist 
-        return new Arzt();
+    public void behandeln(Arzt arzt) { // Parameter muss gleich oder Obertyp sein
+        System.out.println("Behandle Hausarzt spezifisch");
     }
 }
+
 ```
 
 Zusammenfassung in der pptx: PII_03_Vererbung.pdf auf Seite 36.
