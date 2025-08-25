@@ -9,10 +9,10 @@ Vereinfacht gesagt, eine Superklasse stellt Methoden bereit, die von Unterklasse
 Ein Beispiel:
 Superklasse Tier(allgemeiner Typ) mit der Methode `lautGeben()` (&larr; hört sich noch sehr allgemein an) bestückt wird nur mit `System.out.println("lautGeben")` gefüllt.
 
-Unterklassen, die von Tier erben sind Katze, Hund und Kuh(spezifischer Typ). Alle diese Unterklassen besitzen nun die vererbte Methode `lautGeben()` und spezifizieren diese:<br>
-`lautGeben()` bei der Katze beinhaltet nun `System.out.println("Miau")`<br>
-`lautGeben()` bei der Hund beinhaltet nun `System.out.println("Wuff")`<br>
-`lautGeben()` bei der Kuh beinhaltet nun `System.out.println("Muuh")`<br>
+Unterklassen, die von Tier erben sind **Katze, Hund und Kuh**(spezifischer Typ). Alle diese Unterklassen besitzen nun die vererbte Methode `lautGeben()` und spezifizieren diese:<br>
+`lautGeben()` bei der **Katze** beinhaltet nun `System.out.println("Miau")`<br>
+`lautGeben()` bei der **Hund** beinhaltet nun `System.out.println("Wuff")`<br>
+`lautGeben()` bei der **Kuh** beinhaltet nun `System.out.println("Muuh")`<br>
 
 Man sieht nun deutlich das immer wieder die gleiche Methode anders genutzt wird.
 
@@ -59,14 +59,85 @@ class Kuh extends Tier{
 ```
 
 
+Der Compiler sieht nur den allgemeinen Typ und seine Methoden, aber zur Laufzeit wird die Methode der tatsächlichen Objektinstanz(des speziellem Typs) aufgerufen. Dieser Prozess wird späte Bindung genannt.
 
 
+## Späte Bindung
 
-Der Compiler sieht nur den allgemeinen Typ und seine Methoden, aber zur Laufzeit wird die Methode der tatsächlichen Objektinstanz aufgerufen. Dieser Prozess wird späte Bindung genannt.
+Um späte Bindung zu erklären wird das Beispiel aus dem Folien von Frau Schmidt.
+<br>
+Der Code besteht aus den Klassen Tier, ZweiBeiner, Rattenhörnchen
 
+**Tier** <br><br>
+&darr; *vererbt an* <br><br>
+**ZweiBeiner** <br><br>
+&darr; *vererbt an* <br><br>
+**Rattenhoernchen**
 
+```Java
+public class Tier {
+    int alter;
+    String name;
 
+    public Tier(int alter, String name) {
+        this.alter = alter;
+        this.name = name;
+    }
 
+    public Tier(){}
+
+    public void bewegen(){
+        System.out.println("Bewegen");
+    }
+
+    public void fressen(){
+        System.out.println("Fressen");
+    }
+
+    public void schlafen(){
+        System.out.println("Schlafen");
+    }
+
+    public void lautGeben(){
+        System.out.println("LautGeben");
+    }
+}
+-------------------------------------------------------
+public class ZweiBeiner extends Tier {
+    public ZweiBeiner(int alter, String name) {
+        super(alter, name);
+    }
+
+    public ZweiBeiner() {}
+
+    @Override
+    public void bewegen(){
+        System.out.println("Bewegen zwei Beiner");
+    }
+}
+-------------------------------------------------------
+public class Rattenhoernchen extends ZweiBeiner {
+    public Rattenhoernchen(int alter, String name){
+        super(alter, name);
+    }
+
+    public Rattenhoernchen(){}
+
+    @Override
+    public void fressen() {
+        super.fressen();
+    }
+
+    @Override
+    public void lautGeben() {
+        System.out.println("Rattenhoernchen squiieet");
+    }
+
+    public void versteckeEichel(){
+        System.out.println("Rattenhoernchen versteckt Eichel");
+    }
+}
+```
 ---
 ---
 ---
