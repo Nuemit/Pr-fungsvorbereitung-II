@@ -143,7 +143,20 @@ public class date {
     }
 }
 ```
-    
+Enums kann man auch mit Funktionen erweitern. Das könnte dann so aussehen: 
+
+```java
+// Ausschnitt des Enums day, das Enum entält Monday - Sunday
+
+// Instanzmethode (non static)
+public boolean isWeekend() {
+    return this == SAT || this == SUN 
+}
+```
+
+
+
+
 
 
 ### Packages
