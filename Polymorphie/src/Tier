@@ -1,0 +1,27 @@
+public class Tier {
+    int alter;
+    String name;
+
+    public Tier(int alter, String name) {
+        this.alter = alter;
+        this.name = name;
+    }
+
+    public Tier(){}
+
+    public void bewegen(){
+        System.out.println("Bewegen");
+    }
+
+    public void fressen(){
+        System.out.println("Fressen");
+    }
+
+    public void schlafen(){
+        System.out.println("Schlafen");
+    }
+
+    public void lautGeben(){
+        System.out.println("LautGeben");
+    }
+}

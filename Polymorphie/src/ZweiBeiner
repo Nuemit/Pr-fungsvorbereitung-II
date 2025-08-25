@@ -1,0 +1,12 @@
+public class ZweiBeiner extends Tier {
+    public ZweiBeiner(int alter, String name) {
+        super(alter, name);
+    }
+
+    public ZweiBeiner() {}
+
+    @Override
+    public void bewegen(){
+        System.out.println("Bewegen zwei Beiner");
+    }
+}

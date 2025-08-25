@@ -1,0 +1,12 @@
+public class Main {
+    public static void main(String[] args) {
+        Tier meinFigur;
+
+        meinFigur = new Rattenhoernchen(12, "Scrat");
+
+        meinFigur.lautGeben();
+        meinFigur.schlafen();
+        meinFigur.bewegen();
+        //meinFigur.versteckeEichel();
+    }
+}

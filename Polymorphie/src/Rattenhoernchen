@@ -1,0 +1,22 @@
+
+public class Rattenhoernchen extends ZweiBeiner {
+    public Rattenhoernchen(int alter, String name){
+        super(alter, name);
+    }
+
+    public Rattenhoernchen(){}
+
+    @Override
+    public void fressen() {
+        super.fressen();
+    }
+
+    @Override
+    public void lautGeben() {
+        System.out.println("Rattenhoernchen squiieet");
+    }
+
+    public void versteckeEichel(){
+        System.out.println("Rattenhoernchen versteckt Eichel");
+    }
+}
