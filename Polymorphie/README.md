@@ -1,5 +1,59 @@
 # Polymorphie
 
+# Schreibteil
+
+## Was ist Polymorphie
+
+Der Kern der Polymorphie ist die Fähigkeit, eine Referenzvariable eines allgemeinen Typs (z.B. Tier) zu verwenden, um ein Objekt eines spezifischeren Typs (z.B. Hund oder Katze) zu halten. <br>
+Vereinfacht gesagt, eine Superklasse stellt Methoden bereit, die von Unterklassen geerbt werden. Wenn nun diese geerbten Methoden auf die Unterklasse zugeschnitten wird entsteht Polymorphie, da das gleiche nur anders genutzt wird.<br>
+Ein Beispiel:
+Superklasse Tier(allgemeiner Typ) mit der Methode `lautGeben()` (&larr; hört sich noch sehr allgemein an) bestückt und einfach nur mit `System.out.println("lautGeben")` gefüllt.
+
+Unterklassen, die von Tier erben sind Katze, Hund und Kuh(spezifischer Typ). Alle diese Unterklassen besitzen nun die vererbte Methode `lautGeben()` und spezifizieren diese:<br>
+`lautGeben()` bei der Katze beinhaltet nun `System.out.println("Miau")`
+`lautGeben()` bei der Hund beinhaltet nun `System.out.println("Wuff")`
+`lautGeben()` bei der Kuh beinhaltet nun `System.out.println("Muuh")`
+
+Man sieht nun deutlich das immer wieder die gleiche Methode anders genutzt wird.
+
+
+
+
+
+
+Der Compiler sieht nur den allgemeinen Typ und seine Methoden, aber zur Laufzeit wird die Methode der tatsächlichen Objektinstanz aufgerufen. Dieser Prozess wird späte Bindung genannt.
+
+
+
+
+---
+---
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Sie haben vollkommen recht, mein Fehler\! Die Methode `versteckeEichel()` kann in diesem Beispiel **nicht** über die Variable `meinFigur` aufgerufen werden. Ihre Beobachtung ist absolut korrekt.
 
 -----
