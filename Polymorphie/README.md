@@ -64,9 +64,9 @@ Der Compiler sieht nur den allgemeinen Typ und seine Methoden, aber zur Laufzeit
 
 ## Späte Bindung
 
-Um späte Bindung zu erklären wird das Beispiel aus dem Folien von Frau Schmidt.
+Um späte Bindung zu erklären wird das Beispiel aus dem Folien von Frau Schmidt benutzt.
 <br>
-Der Code besteht aus den Klassen Tier, ZweiBeiner, Rattenhörnchen
+Der Code besteht aus den Klassen Tier, ZweiBeiner, Rattenhörnchen mit der folgenden Vererbungshierarchie:
 
 **Tier** <br><br>
 &darr; *vererbt an* <br><br>
@@ -112,8 +112,15 @@ public class ZweiBeiner extends Tier {
 
     @Override
     public void bewegen(){
-        System.out.println("Bewegen zwei Beiner");
+        System.out.println("Zwei Beine bewegen");
     }
+
+    @Override
+    public void fressen(){
+        System.out.println("Nom Nom, ich habe zwei Beine")
+    }
+
+
 }
 -------------------------------------------------------
 public class Rattenhoernchen extends ZweiBeiner {
@@ -122,11 +129,6 @@ public class Rattenhoernchen extends ZweiBeiner {
     }
 
     public Rattenhoernchen(){}
-
-    @Override
-    public void fressen() {
-        super.fressen();
-    }
 
     @Override
     public void lautGeben() {
@@ -138,6 +140,27 @@ public class Rattenhoernchen extends ZweiBeiner {
     }
 }
 ```
+In der Folie wird nun mithilfe einer Main-Klasse gefragt, was passieren wird, wenn diese ausgeführt wird. Es wird eine erweiterte Main-Klasse gezeigt, um dies ausführlicher als in den Folien zu erklären.
+
+```Java
+public class Main {
+    public static void main(String[] args) {
+        Tier meinFigur;
+
+        meinFigur = new Rattenhoernchen(12, "Scrat");
+
+        meinFigur.lautGeben();
+        meinFigur.schlafen();
+        meinFigur.bewegen();
+
+        meinFigur.versteckeEichel();
+
+        meinFigur.fressen();
+    }
+}
+
+```
+
 ---
 ---
 ---

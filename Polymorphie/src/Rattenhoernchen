@@ -7,11 +7,6 @@ public class Rattenhoernchen extends ZweiBeiner {
     public Rattenhoernchen(){}
 
     @Override
-    public void fressen() {
-        super.fressen();
-    }
-
-    @Override
     public void lautGeben() {
         System.out.println("Rattenhoernchen squiieet");
     }
