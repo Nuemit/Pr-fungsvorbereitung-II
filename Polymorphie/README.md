@@ -161,12 +161,14 @@ public class Main {
 
 ```
 
-`Tier meinFigur;` eine wird Variable deklariert. Der allgemeine Typ (oder auch statischer Typ genannt) ist hier `Tier`.<br>
-`meinFigur = new Rattenhoernchen(12, "Scrat");`die Variable wird einem neuen Objekt zugewiesen. Der spezifische Typ (oder auch dynamische Typ genannt, da er zur Laufzeit bestimmt wird) ist hier `Rattenhoernchen`.<br>
-<br>
-Nun werden einzelne Methoden von `meinFigur` aufgerufen und gefragt bei welche Methoden aufgerufen werden oder der Compiler einen Fehler findet. <br>
-Wie geht der Compiler vor? Der Compiler kennt den statischen Typ seit wir ihn als Code geschrieben haben. Den dynamischen Typ guckt sich der Compiler erst an, wenn die das Programm ausführen an. Dem entsprechend kennt der Compiler alle Methoden aus `Tier`(statischer Typ) und guckt sich beim Ausführen erst die Methoden des dynamischen Typs (`Rattenhoernchen`) an. Wenn nun der Compiler eine überschriebene Methode, der vererbten Methoden des statischen Typs besitzt, nimmt er diese. Wenn er aber eine Methode nicht findet geht er in der Vererbungs-Hierarchie nach oben und sucht dort weiter.<br>
-**Wichtig** der Compiler kennt nur die Methoden des statischen Typs. Wenn der dynamische Typ noch andere Klassen besitzt, außer die vererbten des statischen Typs, kennt der Compiler diese nicht. Der statische Typ setzt quasi einen Rahmen in der sich der Compiler bewegt und nach Methoden suchen kann.<br><br>
+`Tier meinFigur;` eine Variable wird deklariert. Der allgemeine Typ (oder auch statischer Typ genannt) ist hier `Tier`.<br>
+`meinFigur = new Rattenhoernchen(12, "Scrat");`die Variable wird einem neuen Objekt zugewiesen. Der spezifische Typ (oder auch dynamische Typ genannt, da er zur Laufzeit bestimmt wird) ist hier `Rattenhoernchen`.<br><br>
+
+Nun werden einzelne Methoden von `meinFigur` aufgerufen und gefragt welcher Methodenaufruf funktioniert oder der Compiler einen Fehler findet. <br><br>
+
+**Wie geht der Compiler vor?**<br> 
+Der Compiler kennt den statischen Typ seit wir ihn als Code geschrieben haben. Den dynamischen Typ guckt sich der Compiler erst an, wenn das Programm ausführt wird. Dem entsprechend kennt der Compiler alle Methoden aus `Tier`(statischer Typ) und guckt sich beim Ausführen erst die Methoden des dynamischen Typs (`Rattenhoernchen`) an. Wenn nun der Compiler eine überschriebene Methode, der vererbten Methoden des statischen Typs besitzt, nimmt er diese. Wenn er aber eine Methode nicht findet geht er in der Vererbungs-Hierarchie nach oben und sucht dort weiter. Falls es gar keine überschriebene Methode gibt nutzt er einfach die aus dem statischen Typ `Tier`.<br>
+**Wichtig**, der Compiler kennt nur die Methoden des statischen Typs. Wenn der dynamische Typ noch andere Klassen besitzt, außer die vererbten des statischen Typs, kennt der Compiler diese nicht. Der statische Typ setzt quasi einen Rahmen in der sich der Compiler bewegt und nach Methoden suchen kann.<br><br>
 
 Gehen wir die einzelnen Methodenaufrufe durch:<br>
 `meinFigur.lautGeben();` 
