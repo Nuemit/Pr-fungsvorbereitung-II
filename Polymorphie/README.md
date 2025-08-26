@@ -7,7 +7,7 @@
 Der Kern der Polymorphie ist die Fähigkeit, eine Referenzvariable eines allgemeinen Typs (z.B. Tier) zu verwenden, um ein Objekt eines spezifischeren Typs (z.B. Hund oder Katze) zu halten. <br>
 Vereinfacht gesagt, eine Superklasse stellt Methoden bereit, die von Unterklassen geerbt werden. Wenn nun diese geerbten Methoden auf die Unterklasse zugeschnitten wird entsteht Polymorphie, da das gleiche nur anders genutzt wird.<br>
 Ein Beispiel:
-Superklasse Tier(allgemeiner Typ) mit der Methode `lautGeben()` (&larr; hört sich noch sehr allgemein an) bestückt wird nur mit `System.out.println("lautGeben")` gefüllt.
+Superklasse Tier(allgemeiner Typ) mit der Methode `lautGeben()` bestückt wird nur mit `System.out.println("lautGeben")`(&larr; hört sich noch sehr allgemein an) gefüllt.
 
 Unterklassen, die von Tier erben sind **Katze, Hund und Kuh**(spezifischer Typ). Alle diese Unterklassen besitzen nun die vererbte Methode `lautGeben()` und spezifizieren diese:<br>
 `lautGeben()` bei der **Katze** beinhaltet nun `System.out.println("Miau")`<br>
@@ -140,7 +140,7 @@ public class Rattenhoernchen extends ZweiBeiner {
     }
 }
 ```
-In der Folie wird nun mithilfe einer Main-Klasse gefragt, was passieren wird, wenn diese ausgeführt wird. Es wird eine erweiterte Main-Klasse gezeigt, um dies ausführlicher als in den Folien zu erklären.
+In der Folie wird nun mithilfe einer Main-Klasse gefragt, was passieren wird, wenn diese ausgeführt wird.
 
 ```Java
 public class Main {
@@ -160,6 +160,17 @@ public class Main {
 }
 
 ```
+
+`Tier meinFigur;` eine wird Variable deklariert. Der allgemeine Typ (oder auch statischer Typ genannt) ist hier `Tier`.<br>
+`meinFigur = new Rattenhoernchen(12, "Scrat");`die Variable wird einem neuen Objekt zugewiesen. Der spezifische Typ (oder auch dynamische Typ genannt, da er zur Laufzeit bestimmt wird) ist hier `Rattenhoernchen`.<br>
+<br>
+Nun werden einzelne Methoden von `meinFigur` aufgerufen und gefragt bei welche Methoden aufgerufen werden oder der Compiler einen Fehler findet. <br>
+Wie geht der Compiler vor? Der Compiler kennt den statischen Typ seit wir ihn als Code geschrieben haben. Den dynamischen Typ guckt sich der Compiler erst an, wenn die das Programm ausführen an. Dem entsprechend kennt der Compiler alle Methoden aus `Tier`(statischer Typ) und guckt sich beim Ausführen erst die Methoden des dynamischen Typs (`Rattenhoernchen`) an. Wenn nun der Compiler eine überschriebene Methode, der vererbten Methoden des statischen Typs besitzt, nimmt er diese. Wenn er aber eine Methode nicht findet geht er in der Vererbungs-Hierarchie nach oben und sucht dort weiter.<br>
+**Wichtig** der Compiler kennt nur die Methoden des statischen Typs. Wenn der dynamische Typ noch andere Klassen besitzt, außer die vererbten des statischen Typs, kennt der Compiler diese nicht. Der statische Typ setzt quasi einen Rahmen in der sich der Compiler bewegt und nach Methoden suchen kann.<br><br>
+
+Gehen wir die einzelnen Methodenaufrufe durch:<br>
+`meinFigur.lautGeben();` 
+
 
 ---
 ---
