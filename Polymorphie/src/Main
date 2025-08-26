@@ -8,6 +8,6 @@ public class Main {
         meinFigur.schlafen();
         meinFigur.bewegen();
         //meinFigur.versteckeEichel();
-        meinFigur.fressen();
+        
     }
 }

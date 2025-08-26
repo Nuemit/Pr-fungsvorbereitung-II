@@ -114,13 +114,6 @@ public class ZweiBeiner extends Tier {
     public void bewegen(){
         System.out.println("Zwei Beine bewegen");
     }
-
-    @Override
-    public void fressen(){
-        System.out.println("Nom Nom, ich habe zwei Beine")
-    }
-
-
 }
 -------------------------------------------------------
 public class Rattenhoernchen extends ZweiBeiner {
@@ -154,8 +147,6 @@ public class Main {
         meinFigur.bewegen();
 
         meinFigur.versteckeEichel();
-
-        meinFigur.fressen();
     }
 }
 
@@ -170,8 +161,22 @@ Nun werden einzelne Methoden von `meinFigur` aufgerufen und gefragt welcher Meth
 Der Compiler kennt den statischen Typ seit wir ihn als Code geschrieben haben. Den dynamischen Typ guckt sich der Compiler erst an, wenn das Programm ausgeführt wird. Dem entsprechend kennt der Compiler alle Methoden aus `Tier`(statischer Typ) und guckt sich beim Ausführen erst die Methoden des dynamischen Typs (`Rattenhoernchen`) an. Wenn nun der Compiler eine überschriebene Methode, der vererbten Methoden des statischen Typs findet, nimmt er diese. Wenn er aber eine Methode nicht findet geht er in der Vererbungs-Hierarchie nach oben und sucht dort weiter. Falls es gar keine überschriebene Methode gibt nutzt er einfach die aus dem statischen Typ `Tier`.<br>
 **Wichtig**, der Compiler kennt nur die Methoden des statischen Typs. Wenn der dynamische Typ noch andere Methoden besitzt, außer die vererbten des statischen Typs, kennt der Compiler diese nicht. Der statische Typ setzt quasi einen Rahmen in der sich der Compiler bewegt und nach Methoden suchen kann.<br><br>
 
-Gehen wir die einzelnen Methodenaufrufe durch:<br>
-`meinFigur.lautGeben();` 
+
+> **Gehen wir die einzelnen Methodenaufrufe durch:**<br><br>
+>
+>`meinFigur.lautGeben();` &larr; der Compiler sucht jetzt nach der Methode in Rattenhörnchen und findet die überschriebene lautGeben() Methode, somit ist die Ausgabe im Terminal: "Rattenhoernchen squiieet".<br><br>
+>
+>`meinFigur.schlafen();`&larr; der Compiler finde sowohl in Rattenhoernchen als auch in ZweiBeiner keine überschriebene Methode und nimmt dadurch die Methode aus Tier. Die Ausgabe im Terminal ist: "Schlafen".<br><br>
+>
+> `meinFigur.bewegen();` &larr; der Compiler findet keine überschriebene Methode in Rattenhoernchen und geht die Vererbungs-Hierarchie eine Stufe nach oben. Im ZweiBeiner finde er die überschriebene Methode bewegen() und gibt sie aus: "Zwei Beine bewegen".<br><br>
+>
+> `meinFigur.versteckeEichel();`&larr; der Compiler kennt nur alle Methoden aus dem statischen Typ Tier und weiß somit nichts mit diesem Methodenaufruf anzufangen, daher wirft er einen Fehler namens "cannot find symbol"
+
+
+
+ 
+
+
 
 
 ---

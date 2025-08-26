@@ -9,11 +9,4 @@ public class ZweiBeiner extends Tier {
     public void bewegen(){
         System.out.println("Zwei Beine bewegen");
     }
-
-    @Override
-    public void fressen(){
-        System.out.println("Nom Nom, ich habe zwei Beine")
-    }
-
-
 }
