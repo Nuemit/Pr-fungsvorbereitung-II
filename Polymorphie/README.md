@@ -162,18 +162,18 @@ Der Compiler kennt den statischen Typ seit wir ihn als Code geschrieben haben. D
 **Wichtig**, der Compiler kennt nur die Methoden des statischen Typs. Wenn der dynamische Typ noch andere Methoden besitzt, außer die vererbten des statischen Typs, kennt der Compiler diese nicht. Der statische Typ setzt quasi einen Rahmen in der sich der Compiler bewegt und nach Methoden suchen kann.<br><br>
 
 
-> **Gehen wir die einzelnen Methodenaufrufe durch:**<br><br>
->
->`meinFigur.lautGeben();` &larr; der Compiler sucht jetzt nach der Methode in Rattenhörnchen und findet die überschriebene lautGeben() Methode, somit ist die Ausgabe im Terminal: "Rattenhoernchen squiieet".<br><br>
->
->`meinFigur.schlafen();`&larr; der Compiler finde sowohl in Rattenhoernchen als auch in ZweiBeiner keine überschriebene Methode und nimmt dadurch die Methode aus Tier. Die Ausgabe im Terminal ist: "Schlafen".<br><br>
->
-> `meinFigur.bewegen();` &larr; der Compiler findet keine überschriebene Methode in Rattenhoernchen und geht die Vererbungs-Hierarchie eine Stufe nach oben. Im ZweiBeiner finde er die überschriebene Methode bewegen() und gibt sie aus: "Zwei Beine bewegen".<br><br>
->
-> `meinFigur.versteckeEichel();`&larr; der Compiler kennt nur alle Methoden aus dem statischen Typ Tier und weiß somit nichts mit diesem Methodenaufruf anzufangen, daher wirft er einen Fehler namens "cannot find symbol"
+ **Gehen wir die einzelnen Methodenaufrufe durch:**<br><br>
+
+`meinFigur.lautGeben();` &larr; der Compiler sucht jetzt nach der Methode in Rattenhörnchen und findet die überschriebene lautGeben() Methode, somit ist die Ausgabe im Terminal: "Rattenhoernchen squiieet".<br><br>
+
+`meinFigur.schlafen();`&larr; der Compiler finde sowohl in Rattenhoernchen als auch in ZweiBeiner keine überschriebene Methode und nimmt dadurch die Methode aus Tier. Die Ausgabe im Terminal ist: "Schlafen".<br><br>
+
+ `meinFigur.bewegen();` &larr; der Compiler findet keine überschriebene Methode in Rattenhoernchen und geht die Vererbungs-Hierarchie eine Stufe nach oben. Im ZweiBeiner finde er die überschriebene Methode bewegen() und gibt sie aus: "Zwei Beine bewegen".<br><br>
+
+ `meinFigur.versteckeEichel();`&larr; der Compiler kennt nur alle Methoden aus dem statischen Typ Tier und weiß somit nichts mit diesem Methodenaufruf anzufangen, daher wirft er einen Fehler namens "cannot find symbol" <br><br>
 
 
-
+**Späte Bindung** bezeichnet also die Bestimmung des Objekttyps und Methode erst zur Laufzeit.
  
 
 
