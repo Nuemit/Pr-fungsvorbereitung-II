@@ -113,15 +113,15 @@ Das sieht dann wie folgend aus:
 ```java 
 public enum Day {MON, TUE, WED, THUR, FRI, SAT, SUN}
 ```
-Damit kann man Aufzählungen definieren. Die Werte sind dann standartmäßig Konstant (daher groß geschrieben). Ein Enum wird in einer eigenen Datei gespeichert. Ähnlich wie Klassen und Interfaces. Bsp.: day.java 
+Damit kann man Aufzählungen definieren. Die Werte sind dann standardmäßig Konstant (daher groß geschrieben). Ein Enum wird in einer eigenen Datei gespeichert. Ähnlich wie Klassen und Interfaces. Bsp.: day.java 
 
 Um mit einem Enum zu arbeiten kann man das wie folgend machen: 
 ```java 
 // Wir haben das Enum day - day.java
-public enum day {MON, TUE, WED, THUR, FRI, SAT, SUN}
+public enum Day {MON, TUE, WED, THUR, FRI, SAT, SUN}
 
 // Wir haben die Klasse date - date.java 
-public class date {
+public class Date {
     public void appointDay() {
         // Der Name des Enums wird als Datentyp für die Variable genommen.
         Day whichDay;
@@ -146,7 +146,7 @@ public class date {
 Enums kann man auch mit Funktionen erweitern. Das könnte dann so aussehen: 
 
 ```java
-// Ausschnitt des Enums day, das Enum entält Monday - Sunday
+// Ausschnitt des Enums Day, das Enum entält Monday - Sunday
 
 // Instanzmethode (non static)
 public boolean isWeekend() {
