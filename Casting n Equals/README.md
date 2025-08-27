@@ -342,6 +342,10 @@ Der **Compiler** kennt nur den statischen Typ (`Object`). Die **JVM** (Java Virt
 
 ## Prompt
 
+Also wenn der Parameter übergeben wird, verliert er nicht den statischen Typ an Object sonder behält alle Typen
+
+### Gemini
+
 Deine Annahme, dass der Parameter `obj` alle Typen behält, ist nicht ganz korrekt. Das ist ein häufiges Missverständnis.
 
 Der Parameter `obj` verliert seinen ursprünglichen **statischen Typ** nicht, aber er wird vom Compiler als **`Object`** behandelt. Der Compiler sieht nur den deklarierten Parametertyp `Object`. Der **dynamische Typ** des Objekts bleibt jedoch erhalten und ist für die JVM zur Laufzeit sichtbar.
