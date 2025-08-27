@@ -41,17 +41,17 @@ public abstract datentyp methodenName(arg1, arg2, ...);
 * Die einzigen Attribute, die in einem Interface erlaubt sind, sind die Klassen-Attribute (Müssen `static` sein).
 * Die Attribute werden, auch wenn sie nicht als solche deklariert sind - als `final` behandelt.
 * Ein Interface enthält keinerlei Implementation, daher wird der Methoden-Rumpf durch ein Semikolon ersetzt.
-* Der Modifikator `abstract` muss nicht angegeben werden, da alle Methoden eines Interfaces implizit abstrakt
+* Der Modifikator `abstract` muss nicht angegeben werden, da alle Methoden eines Interfaces implizit abstrakt sind.
 * Alle Methoden sind implizit `public`, der Modifikator `public` muss **nicht** angegeben werden. Es ist ein Fehler, eine Methode eines Interface als `protected` oder `private` zu definieren.
 * Ein Interface kann nicht instanziiert werden und definiert deswegen auch **KEINEN** Konstruktor.
 
 # Implementierung von Interfaces
-Für die Implementierung eines Interface wird das Schlüsselwort `implements` verwendet. Eine Klasse kann auch mehrere Interfaces implementieren. Eine Implements klausel, steht in einer Klassendeklaration immer **NACH** der `extends` Klausel. 
+Für die Implementierung eines Interface wird das Schlüsselwort `implements` verwendet. Eine Klasse kann auch mehrere Interfaces implementieren. Eine Implements-Klausel, steht in einer Klassendeklaration immer **NACH** der `extends` Klausel. 
 
 *Bsp:*
 ```java
-public class Klasse1 implements abc {}
-public class Klasse2 extends Klasse1 implements abc {}
+public class Klasse1 implements Interface1, ... {}
+public class Klasse2 extends Klasse1 implements Interface2, Interface3, ... {}
 ```
 
 Gegeben sei das Interface *Fahrzeug* und die Klasse *Auto* die dieses implementiert.
