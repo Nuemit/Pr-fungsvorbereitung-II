@@ -42,7 +42,7 @@ Primitive Datentypen und ihre dazugehörigen Wrapperklassen sind:
 | boolean                   | Boolean       |
 
 Warum braucht man soetwas wie Wrapper-Klassen?
-Es gibt in Java Collections. Diese können nur mit Objecten Arbeiten. Um dennoch mit den Collections arbeiten zu können sind diese Wrapper-Klassen da. Diese machen den Primitiven Datentyp in ein Objekt. 
+Es gibt Java Collections. Diese können nur mit Objecten Arbeiten. Um dennoch mit den Collections arbeiten zu können sind diese Wrapper-Klassen da. Diese machen den Primitiven Datentyp in ein Objekt. 
 
 Wie man ein int in ein Int "umwandelt".
 ```java
