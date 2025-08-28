@@ -1,3 +1,138 @@
+# Grobe Zusammenfassung
+
+### Upcasting
+
+Upcasting ist der Vorgang, bei dem ein Objekt einer Unterklasse als eine Instanz ihrer Oberklasse behandelt wird. Es ist eine implizite (automatische) Konvertierung, weil die Unterklasse immer alle Eigenschaften und Methoden ihrer Oberklasse besitzt. Es gibt also keine Möglichkeit, dass Informationen verloren gehen.
+
+### Downcast -> noch zu schwamig
+
+Downcasting ist der Vorgang, bei dem ein Objekt von einem Oberklassentyp zu einem spezifischeren Unterklassentyp konvertiert wird. Dieser Vorgang ist **nicht automatisch** möglich, da der Compiler nicht garantieren kann, dass das Objekt zur Laufzeit tatsächlich vom Unterklassentyp ist. Daher muss ein **expliziter Cast**, der Laufzeit überprüft wird, verwendet werden, der dem Compiler signalisiert, dass der Programmierer die Verantwortung für die Korrektheit der Konvertierung übernimmt.
+
+Wenn die Konvertierung fehlschlägt, weil das Objekt nicht tatsächlich vom angegebenen Untertyp ist, tritt eine `ClassCastException` zur Laufzeit auf.
+
+```Java
+// Upcast: Ein Rattenhoernchen-Objekt wird als Tier gespeichert.
+Tier meinFigur = new Rattenhoernchen(12, "Scrat");
+
+// Downcast: Die Tier-Variable wird wieder in einen Rattenhoernchen-Typ konvertiert.
+// Das ist möglich, weil das Objekt dahinter tatsächlich ein Rattenhoernchen ist.
+Rattenhoernchen deinFigur = (Rattenhoernchen) meinFigur;
+
+// Jetzt kannst du auf spezifische Methoden der Rattenhoernchen-Klasse zugreifen.
+deinFigur.nuesseSammeln();
+```
+
+### Warum equals() mit getClass() und nicht instaceOf()
+
+Wenn dein Lehrer darauf besteht, `getClass()` anstelle von `instanceof` zu verwenden, folgt er einem bestimmten Designprinzip, das als **Klassen-Identität** (class identity) oder **strikte Gleichheit** bekannt ist.
+
+#### Der Unterschied
+
+1.  **`instanceof` (Typ-Kompatibilität):** Dieser Operator prüft, ob das übergebene Objekt eine Instanz der eigenen Klasse **oder einer ihrer Unterklassen** ist.
+
+      * **Beispiel:** Ein `Rattenhoernchen` ist auch `instanceof Tier`. Eine `equals`-Methode in der `Tier`-Klasse, die `instanceof` verwendet, würde `Tier` und `Rattenhoernchen` als gleichwertige Typen betrachten (bis sie die Felder vergleicht).
+
+2.  **`getClass()` (Klassen-Identität):** Diese Methode gibt die genaue Klasse eines Objekts zurück.
+
+      * **Beispiel:** `tierObjekt.getClass()` gibt `Tier.class` zurück, während `rattenhoernchenObjekt.getClass()` `Rattenhoernchen.class` zurückgibt. Eine `equals`-Methode, die `getClass()` verwendet, würde nur dann fortfahren, wenn beide Objekte exakt denselben Typ haben.
+
+### Warum man `getClass()` bevorzugen könnte
+
+Die Verwendung von `getClass()` ist sinnvoll, wenn die **Gleichheit nur zwischen Objekten des exakt gleichen Typs** bestehen soll. Das ist oft der Fall, wenn Unterklassen neue Felder oder Verhaltensweisen hinzufügen, die nicht in der Oberklasse existieren.
+
+**Vorteile von `getClass()`:**
+
+  * **Symmetrie:** Es garantiert, dass die `equals`-Methode symmetrisch ist. Wenn `a.equals(b)` wahr ist, muss auch `b.equals(a)` wahr sein. Mit `instanceof` kann das bei Vererbung ein Problem sein.
+  * **Strikte Gleichheit:** Es stellt sicher, dass Objekte nur dann als gleich gelten, wenn sie wirklich dieselbe Klasse haben. Dies vermeidet unerwartete Vergleiche zwischen einem Objekt der Oberklasse und einem der Unterklasse, die möglicherweise nicht die gleichen Felder besitzen.
+
+### Beispiel für die `equals`-Methode mit `getClass()`
+
+```java
+public class Rattenhoernchen {
+    private String name;
+    private int alter;
+
+    @Override
+    public boolean equals(Object obj) {
+        // Prüft, ob 'obj' null ist oder nicht exakt denselben Klassentyp hat
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        // Sicherer Downcast, da der Typ bereits geprüft wurde
+        Rattenhoernchen other = (Rattenhoernchen) obj;
+
+        // Vergleiche die Felder
+        return this.name.equals(other.name) && this.alter == other.alter;
+    }
+}
+```
+
+Zusammenfassend lässt sich sagen, dass der Gebrauch von `getClass()` eine **strengere** Definition von Gleichheit erzwingt. Beide Ansätze (`instanceof` und `getClass()`) haben ihre Berechtigung, aber für die meisten Fälle und um das `equals`-Vertrag einzuhalten, ist `getClass()` die sicherere und empfohlene Methode.
+
+### Zeitstrahl einer `equals()``
+
+**1. Objekt-Erstellung**
+Das Objekt wird im Speicher erzeugt.
+
+`Tier meinFigur = new Rattenhoernchen();`
+* **Statischer Typ von `meinFigur`**: `Tier`
+* **Dynamischer Typ von `meinFigur`**: `Rattenhoernchen`
+
+---
+
+**2. Parameterübergabe an `equals(Object obj)`**
+Die Variable `meinFigur` wird als Argument an die Methode `equals` übergeben.
+
+* Der Parameter `obj` der Methode erhält eine Referenz auf dasselbe Objekt. 
+* **Statischer Typ des Parameters `obj`**: `Object` (Der Compiler behandelt es als den allgemeinsten Typ.)
+* **Dynamischer Typ des Parameters `obj`**: `Rattenhoernchen` (Das Objekt selbst ändert seinen Typ nicht.)
+
+---
+
+**3. Innerhalb der `equals`-Methode**
+Die Methode beginnt mit der Ausführung.
+
+`if (this.getClass() == obj.getClass()) { ... }`
+
+* `obj.getClass()` gibt `Rattenhoernchen.class` zurück, da der dynamische Typ des Objekts `Rattenhoernchen` ist.
+* Die Bedingung ist wahr, weil beide Klassen übereinstimmen.
+
+---
+
+**4. Downcast**
+Eine neue Variable wird erzeugt, um die spezifischen Felder des Objekts zugänglich zu machen.
+
+`Rattenhoernchen other = (Rattenhoernchen) obj;`
+
+* **Statischer Typ von `obj`**: Bleibt `Object`.
+* **Dynamischer Typ von `obj`**: Bleibt `Rattenhoernchen`.
+* **Statischer Typ von `other`**: `Rattenhoernchen` (Explizit deklariert.)
+* **Dynamischer Typ von `other`**: `Rattenhoernchen` (Zeigt auf das gleiche Objekt wie `obj`.)
+
+Der Zeitstrahl zeigt also, dass sich der dynamische Typ des Objekts nie ändert. Was sich ändert, ist, wie der Compiler und die Variablen das Objekt in verschiedenen Phasen sehen.
+
+### Warum Downcast in `equals()`
+
+Wenn ein eine Referenzvariable nicht den gleichen statischen Typ hat, wie die Klasse in der equals() benutzt wird, kann man nicht auf alle Klassenattribute zugreifen. Deshalb wird Downgecastet, um sicher zu stellen, das alle Felder/Attribute miteinander verglichen werden können.
+
+#### Beispiel:
+
+Klasse Tier hat die Attribute [int age] und [String name]<br>
+Klasse Nilpferd hat die geerbten Attribute von Tier und [int gewicht]<br><br>
+
+Würde man nun eine Referenzvariable erstellen wie: `Tier hippo = new Nilpferd`, und in der `equals()`nicht downcasten könnte man nur auf die Tier attribute zugreifen und somit wäre die `equals()`nicht mehr brauchbar.<br>
+Nun wird eine neue Referenzvariable erstellt mit der man `hippo`downcastet: `Nilpferd dickeshippo = (Nilpferd) hippo`. Jetzt kann man mit `dickeshippo` auf alle Attribute zugegriffen und eine sichere `equals()`durchgeführt werden.
+
+
+
+
+
+
+
+
+
+
 ## Prompt
 - ist das ein gutes Beispiel für Downcast -> Rattenhoernchen deinFigur = (Rattenhoernchen) Tier
 
@@ -344,7 +479,7 @@ Der **Compiler** kennt nur den statischen Typ (`Object`). Die **JVM** (Java Virt
 
 Also wenn der Parameter übergeben wird, verliert er nicht den statischen Typ an Object sonder behält alle Typen
 
-### Gemini
+## Gemini
 
 Deine Annahme, dass der Parameter `obj` alle Typen behält, ist nicht ganz korrekt. Das ist ein häufiges Missverständnis.
 
