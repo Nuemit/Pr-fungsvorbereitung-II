@@ -177,6 +177,14 @@ Der Compiler kennt den statischen Typ seit wir ihn als Code geschrieben haben. D
 
 ## Weitere verschiedene Erklärungen
 
+### Polymorphie
+
+Polymorphie, was "Vielgestaltigkeit" bedeutet, ermöglicht es, dass Objekte unterschiedlicher Klassen über eine gemeinsame Schnittstelle angesprochen werden. Sie basiert auf den folgenden Prinzipien:
+
+1.  **Gemeinsame Oberklasse:** Objekte von Unterklassen können über eine Variable ihrer gemeinsamen Oberklasse referenziert werden.
+2.  **Dynamische Methodenbindung:** Die Entscheidung, welche Methode aufgerufen wird, erfolgt erst zur **Laufzeit**, basierend auf dem dynamischen Typ des Objekts.
+3.  **Methodenüberschreibung (Overriding):** Eine überschriebene Methode in einer Unterklasse wird von allen nachfolgenden Unterklassen geerbt, es sei denn, sie wird erneut überschrieben.
+
 ### Späte Bindung und Polymorphie:
 Wenn Sie `Tier meinFigur = new Rattenhoernchen();` schreiben, können Sie auf alle Methoden zugreifen, die in der `Tier`-Klasse existieren. Zur **Laufzeit** entscheidet Java, welche **Implementierung** aufgerufen wird. Wenn die Methode in `Rattenhoernchen` überschrieben wurde, wird diese spezifische Version ausgeführt. Das ist die Essenz der **späten Bindung**.
 
