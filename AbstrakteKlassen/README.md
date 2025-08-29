@@ -51,7 +51,7 @@ public abstract class Animal {
     //konkrete Methode, die normal vererbt wird
     public void eat(){
         System.out.println("munch munch");
-    };
+    }
 }
 ```
 
@@ -88,8 +88,20 @@ public class MainAbstractClasses {
 ## Prog Fragen
 
 1. Was bedeutet Polymorphie?
-    - siehe [Polymorphie](../Polymorphie/README.md)
-2. Was muss bei der Konvertierung von Referenzvariablen beachtet werden?
+- siehe [Polymorphie](../Polymorphie/README.md)
+- Polymorphie ist die Fähigkeit, eine Variable eines allgemeineren Typs (einer Oberklasse) zu verwenden, um auf Objekte zu verweisen, die von dieser Oberklasse abgeleitet sind. <br> 
+    &#10162; Wobei zur Laufzeit dynamisch ermittelt wird, welcher Objekttyp tatsächlich vorliegt und daraufhin die entsprechende Methode des Objekts aufgerufen wird.<br><br>
+
+2. Was muss bei der Konvertierung von Referenzvariablen beachtet werden?<br>
+- **Verbreiternde Konvertierung**
+    - ein Objekt einer Unterklasse wird als ein Objekt einer Oberklasse verwaltet &rarr; **Upcast**.<br>
+    - Code-Beispiel: `Tier meinFigur = new Rattenhoernchen` Rattenhoernchen wird zu Tier hochgecastet.
+    - Upcasting heißt also es wird in der Vererbungs-Hierarchie nach oben gecastet.
+    - Upcasting ist erlaubt und wird ohne Cast-Operator automatisch durchgeführt.
+
+- **Verengende Konvertierung**
+    - ein Objekt wird in den Typ einer vererbten Unterklasse abgeleitet &rarr; **Downcast**
+    - Code-Beispiel: `Rattenhoernchen deinFigur = (Rattenhoernchen) Tier`
 3. Können Referenzvariablen in einfache Datentypen konvertiert werden?
 4. Können einfache Datentypen in Java in Referenzvariablen konvertiert werden?
 5. Welche Rolle spielt die Klasse Object in Java?
