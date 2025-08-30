@@ -9,7 +9,7 @@ public abstract class Arzt {
     }
 
     public void setMachtHB(boolean machthb) {
-        this.machtHB = machtHB;
+        this.machtHB = machthb;
     }
 
 }
