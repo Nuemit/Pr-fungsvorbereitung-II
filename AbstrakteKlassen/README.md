@@ -207,7 +207,9 @@ System.out.println(binärwert); // Ausgabe: 1100100
     - ... wenn sie ALLE abstrakten Methoden ihrer Oberklasse überschreibt
     - ... und für jede eine Implementierung bereitstellt
 
+## abstract Klassen und Methoden in UML
 
+![UML](abstractUML.png)
 
 ## Notizen
 Ein "Nicht-Zugriffsmodifikator" in Java ist ein Schlüsselwort, das die Zugriffsebene einer Klasse, eines Feldes oder einer Methode nicht steuert, sondern andere Eigenschaften und Funktionen verleiht.
