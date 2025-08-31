@@ -153,10 +153,48 @@ public boolean isWeekend() {
     return this == SAT || this == SUN 
 }
 ```
+Wenn man den gesamten Inhalt des Enums ausgeben möchte, kann man das mit dem **.value** machen. 
 
-Enums können auch verschiedene / meherere Werte hinter einer Aufzählung haben. Das würde dann z. B. so ausshene: 
+```java
+// z.B. in der main Methode oder einer anderen Methode
+for (Day Wochentag : Day.values()) {
+    System.out.println(Wochentag);
+}
+
+// mit .values wird ein Array erstellt, welches das Enum als Inhalt hat.
+```
+
+
+Enums können auch verschiedene Werte hinter einer Aufzählung haben. Das würde dann z. B. so ausshene: 
 
 ```java 
+public enum Cereals {
+
+    CAPTAIN_CRUNCH(50, 2.90),
+    FROOT_LOOPS(60, 1.90),
+    REESES_PUFFS(100, 1.0),
+    COCA_PUFFS(75, 0.5);
+
+    //Final damit die Werte nicht veränderbar sind.
+    final int levelOfDeliciousness;
+    final double price;
+
+    Cereals (int levelOfDeliciousness, double price) {
+        this.levelOfDeliciousness = levelOfDeliciousness;
+        
+    }
+}
+
+// Um diese Abzurufen könnte das in einer main Methode so aussehen: 
+
+public class EnumTutorial {
+    public static void main(Strin[] agrs) {
+
+      System.out.println(Cereals.FROOT_LOOPS.levelOfDeliciousness);  
+
+      // Im Terminal würde jetzt 60 stehen.
+    }
+}
 ```
 
 
