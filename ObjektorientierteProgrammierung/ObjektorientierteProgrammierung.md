@@ -196,8 +196,46 @@ public class EnumTutorial {
     }
 }
 ```
+#### Switch Ausdruck
+Switch-Anweisungen (Switch Statement) wird durch Lambdaartige Notation, Multi Constant Case und Switch-Ausdrücke (Switch Expression) erweitert.
+
+Lambdaartige Notation:
+```java
+public enum Day {MON, TUE, WED, THUR, FRI, SAT, SUN}
+
+public void appointDay() {
+    switch (whichDay) {
+        case MON -> System.out.println("Monday");
+        case TUE -> System.out.println("Tuesday");
+        cas WED, THUR, FRI -> System.out.println("Wochentag");
+        case SAT, SUN -> System.out.prinln("Weekend"); 
+        // Break nichtmehr notwendig, weil eine Fall-Through Semantik herrscht.
+        // ALLE Konstanten des Enums müssen aufgeführt werden oder Default muss verwendet werden! Sonst Comp. Fehler!
+    }
+}
+```
+Was macht **yield** und was macht den Einsatz davon in Switch-Case Anwendungen interessant?
+
+yield kann genommen werden um den Wert einer case-Klausel zurückzugeben. Wenn man z. B. die Anzahl der Buchstaben von einem Wochentag zurückgeben möchte. 
+
+```java 
+int anzahlBuchstaben;
+
+public void zaehleBuchstaben {
+    anzahlBuchstaben = switch (day) {
+        case MON -> { System.out.println("Montag");
+        yield 6; }
+
+        default -> { 
+            yield 0;
+        }
+    }
+}
+// yield muss dann aber wenn einmal benutzt in jeder Switch-Anweisung vorkommen! 
 
 
+```
+ 
 
 ### Packages
 ### Programmierhinweise
