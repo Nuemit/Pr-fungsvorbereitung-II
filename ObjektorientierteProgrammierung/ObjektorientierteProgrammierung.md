@@ -154,8 +154,10 @@ public boolean isWeekend() {
 }
 ```
 
+Enums können auch verschiedene / meherere Werte hinter einer Aufzählung haben. Das würde dann z. B. so ausshene: 
 
-
+```java 
+```
 
 
 
