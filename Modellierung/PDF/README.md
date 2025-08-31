@@ -210,3 +210,41 @@ Vor dem Aufruf
 Nach dem aufruf
 > "Hallo OnePiece - JUHUUUU!
 
+# Instanz- und Klassen-Member
+Merksatz: Non-Static bedeutet Instanz, Static bedeutet Klassen-Member.
+
+Instanz-Member gehören immer einem Individuellem Objekt (z.B. einem Objekt der Klasse Hund), jedes Objekt hat seine eigene Instanz. Für Klassen Member gilt, das alle Objekte von einer Klasse sich diese Klassen-Member teilen. 
+
+```java
+public class Shepperd extends Dog {
+    public static final String RACE = "Shepperd";   // Klassen-Member
+    private static int population = 25;             // Klassen-Member
+    private String name;    // Instanz-Member
+    private int age;        // Instanz-Member
+
+    public Shepperd(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+``` 
+
+In Unserem Beispiel, ist jedes Objekt der Klasse Shepperd mit dem String `RACE = "Shepperd"` ausgestattet und hat eine population von 25, diese sind **Klassen-Member**. Der Name und das Alter hingegen, sind **Instanz-Member**, da sie für jedes Objekt individuell gelten.
+
+## Im Javainsel Buch vom Rheinwerk Verlag steht zu Statischen Variablen:
+Die Belegung einer statischen Variablen wird bei dem Klassenobjekt gespeichert und nicht bei einem Exemplar der Klasse. Wie wir aber gesehen haben, kann jedes Exemplar einer Klasse auch auf die statischen Variablen der Klasse zugreifen. Da eine statische Variable aber nur einmal pro Klasse vorliegt, führt dies dazu, dass mehrere Objekte sich eine Variable teilen. [Sektion im Buch](https://openbook.rheinwerk-verlag.de/javainsel/06_003.html) Abschnitt 6.3.5
+
+# Standard Operationen von Objekten in Java
+Wenn in Java eine eigene Klasse erstellt wird, erbt diese Klasse standardmäßig von der Klasse `java.lang.Object`. Diese `Object`-Klasse stellt einige grundlegende Methoden zur Verfügung, die für jedes Objekt in Java existieren. Sie werden hier als "Standardoperationen" bezeichnet, weil sie das grundlegende Verhalten von Objekten definieren. 
+
+Die Methoden, die laut den Vorlesungen für uns am Wichtigsten sind, lauten `equals()`, `hashCode()`, `toString()`, `clone()` und `finalize()`. Wobei `finalize` wirklich veraltet ist und **nicht** mehr verwerndet werden soll!
+
+## Clone
+
+## equals
+
+## hashCode
+
+## toString
+
+## finalize
