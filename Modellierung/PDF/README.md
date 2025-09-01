@@ -239,9 +239,32 @@ Wenn in Java eine eigene Klasse erstellt wird, erbt diese Klasse standardmäßig
 
 Die Methoden, die laut den Vorlesungen für uns am Wichtigsten sind, lauten `equals()`, `hashCode()`, `toString()`, `clone()` und `finalize()`. Wobei `finalize` wirklich veraltet ist und **nicht** mehr verwerndet werden soll!
 
+Die beiden Methoden `equals()` und `hashCode()` sind eng miteinander verknüpft und sollten immer zusammen implementiert werden. Sie definieren, wann zwei Objekte als gleichwertig betrachtet werden.
+
 ## Clone
 
 ## equals
+IN der Theorie vergleicht die `equals()` Methode zwei Objekte auf "Gleichheit". Die Standardimplementierung von `Object.equals()` vergleicht nur die Referenzen der Objekte (also, ob sie auf dieselbe Speicheradresse zeigen). Dies ist oft nicht das gewünschte Verhalten. In den allermeisten Fällen, möchte man, dass Objekte als gleichwertig gelten, wenn ihre Zustände (die Attribute eines Objekts) gleich sind, unabhängig davon, ob es sich um dieselbe Instanz handelt.
+
+So würde eine "Falsche" implementierung aussehen, Sie dient nur zu Referenzzwecken.
+**Falsche Implementierung**
+```java
+class Person {
+    private String name;
+    private int alter;
+
+    // ... Konstruktor, Getter, Setter ....
+}
+
+// Test
+Person p1 = new Person("Alice", 30);
+Person p2 = new Person("Alice", 30);
+
+// Dieser Vergleich wäre ohne eine Überschreibung falsch, da er 'false' zurückgibt.
+// Die Objekte sind nicht dieselben, auch wenn ihr Inhalt gleich ist.
+if (p1.equals(p2))
+    // Wird nicht ausgeführt.
+```
 
 ## hashCode
 
