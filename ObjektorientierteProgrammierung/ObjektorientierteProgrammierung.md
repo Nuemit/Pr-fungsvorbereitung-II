@@ -250,6 +250,50 @@ Switch-Ausdrücke kann man auch mit Objekten verwenden. Außerdem ist sind Switc
 - Dienen zur einfachen Verbreitung zusammengehöriger Klassen 
 
 #### Packages & File-Systems
+Packages spiegeln die Verzeichnisstruktur wieder, in der die Klassen abgelegt sind. Innerhalb eines Package müssen die Namen eindeutig zugewiesen sein. 
+Die Package Struktur wird mit Punkten getrennt angegeben. Das könnte z. B. so aussehen: 
+
+projekt.teil1.teil1_1.Klasse_x
+
+
+#### Packages & Namenskonflikte
+Package-Namen müssen weltweit eindeutig sein, so das Packages mit dem umgekehrten Domain-Namen der Ersteller Firma beginnen sollten. Innerhalb der Firma, ist die Firma selbst für eine eigenständige Struktur zuständig. Innerhalb des Projekts selbst, sind die daran beteiligten Mitarbeiter verantwortlich. 
+
+Bsp Package Name: 
+
+de.thb.abteilung.projektname.programmstruktur
+
+oder 
+
+de.thb.fim.projektname.umgebung
+
+fim = Fachbereich Informatik
+
+- Packages werden grundsätzlich kleingeschrieben und beinhalten keine Sonderzeichen
+- Packages der Sprache Java beginnen mit dem reservierten Schlüsselwort java und bei Extensions mit javax
+- Basis-Packages der Sprache Java sehen dann so aus z. B.: java.lang
+
+#### Package-Angabe - Definition
+Vor jedem Kommentar und den Import-Klauseln in der ersten Zeile wird der Name des Packages als Konstrukt angebeben. Damit liegt eine Klasse dann in diesem Package. Package-Name und die Ordnerstruktur, in der die Klasse liegt, muss übereinstimmen.
+
+```java 
+package de.thb.fim.iceage.charaktere;
+```
+
+Mit dem Package wird die Zugehörigkeit einer Klasse zu einem Package beschrieben. Der Package-Name muss immer eindeutig sein. 
+
+#### Import-Klausel - Definition
+Durch eine Import-Klausel können Klassen anderer Packages innerhalb einer Klasse bekannt gemacht werden. Hierbei kann ein zu importierende Klasse explizit angegeben werden, oder alle Klassen eines Packages importiert werden. Die Import-Klausel steht vor der Klassen-Definition. 
+
+```java 
+// Import von Klassen mit expliziter Angabe
+import java.awt.Color; 
+// Import aller Klassen des Package "Utilities"
+// Sollte aber vermieden werden, da Abhängigkeit ungenau.
+import java.util.*;
+```
+
+Mit Import kann man **eine einzelne** Klasse oder **alle Klassen** eines Package innerhalb der importierenden Klasse bekannt gemacht werden.
 
 
 ### Programmierhinweise
