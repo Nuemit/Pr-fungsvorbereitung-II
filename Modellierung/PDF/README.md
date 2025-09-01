@@ -274,6 +274,64 @@ class Person implements Cloneable {
 ```
 Aufgrund der Komplexität und der Tatsache, dass `clone()` eine `protected` Methode ist, die eine speziellee Ausnahme wirft, wird heute oft empfohlen, stattdessen Kopierkonstruktoren oder Fabrikmethoden zu verwenden
 
+### Kopierkonstruktoren
+Ein Kopierkonstruktor ist ein Konstruktor, der ein Objekt derselben klasse als Argument akzeptiert. Er dient dazu, eine neue Instanz zu erstellen, indem er die Werte des übergebenen Objekts kopiert.
+
+**Beispiel**
+```java
+class Adresse {
+    String stadt;
+    String strasse;
+
+    // Normaler konstruktor
+    public Adresse(String stadt, String strasse) {
+        this.stadt = stadt;
+        this.strasse = strasse;
+    }
+
+    // Kopierkonstruktor
+    public Adresse(Adresse andereAdresse) {
+        this.stadt = andereAdresse.stadt;
+        this.strasse = andereAdresse.strasse;w
+    }
+}
+
+// Klasse für Person
+class Person {
+    String name;
+    int alter;
+    Adresse adresse; // Referenz auf ein anderes Objekt
+
+    // Standard-Konstruktor
+    public Person(String name, int alter, Adresse adresse) {
+        this.name = name;
+        this.alter = alter;
+        this.adresse = adresse;
+    }
+
+    // Kopierkonstruktor für Person
+    // Dieser Konstruktor erstellt eine TIEFE Kopie der referenzierten Objekte.
+    public Person(Person anderePerson) {
+        this.name = anderePerson.name;
+        this.alter = anderePerson.alter;
+        // WICHTIG: Hier wird der Kopierkonstruktor der Adresse aufgerufen,
+        // um eine neue, unabhängige Adresse zu erstellen.
+        this.adresse = new Adresse(anderePerson.adresse);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+               "name='" + name + '\'' +
+               ", alter=" + alter +
+               ", adresse=" + adresse +
+               '}';
+    }
+}
+```
+Kopierkonstruktoren werden immer aufgerufen um eine neue Referenz zu schaffen, so werden seperate Instanzen erstellt.
+
+
 ## equals
 IN der Theorie vergleicht die `equals()` Methode zwei Objekte auf "Gleichheit". Die Standardimplementierung von `Object.equals()` vergleicht nur die Referenzen der Objekte (also, ob sie auf dieselbe Speicheradresse zeigen). Dies ist oft nicht das gewünschte Verhalten. In den allermeisten Fällen, möchte man, dass Objekte als gleichwertig gelten, wenn ihre Zustände (die Attribute eines Objekts) gleich sind, unabhängig davon, ob es sich um dieselbe Instanz handelt.
 
