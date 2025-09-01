@@ -388,6 +388,16 @@ public boolean equals(Object o) {
 ## hashCode
 Die Theorie hinter der `hashCode()` Methode ist, dass die Methode eine ganze Zahl (Einen Hash-Code) zurück gibt. Sie soll hauptsächlich in Hash-basierten Datenstrukturen wie `HashMap` und `HashSet` verwendet werden. Der Hash-Code hilft, Objekte effizient in diesen Strukturen zu finden. Die wichtigste Regel lautet:  **Wenn zwei Objekte nach `equals()` gleich sind, MÜSSEN sie denselben Hash-Code haben!**
 
+Die Tabelle zur Berechnung von Hash-Codes
+|Typ|Zugeordnete Integer-Werte|
+|:---|:----------------------|
+|boolean|(field ? 0 : 1)|
+|byte, char, short, int | (int) field |
+|long| (int) (field >>>32) und (int) (field & 0xFFFFFFFF)|
+|float| ((field==0.0F) ? 0 : Float.floatToIntBits(field)) |
+|double| ((field==0.0) ? 0L : Double.doubleToLongBits(field)) und anschließende Behandlung wie bei long |
+|Referenz | ((field==null) ? 0 : field.hashCode()) |
+
 Der Hash-Code sollte aus den gleichen Attributen berechnet werden, die auch im `equals()` Vergleich verwendet werden.
 **Beispielimplementierung von Person(siehe oben)**
 ```java
@@ -471,3 +481,17 @@ public class EigeneRessourceBeispiel {
     }
 }
 ```
+
+# Lernziele aus der VL
+## Wie kann das Geheimnisprinzip umgesetzt werden?
+## Welche OO-Verwaltungsmethoden gibt es?
+## Wie kann this auf zwei unterschiedliche Arten verwendet werden?
+## Wie sollte ein guter Initialisierungskonstruktor implementiert werden?
+## Wie sollten Konstruktoren überladen werden? Welche Rolle spielt this dabei?
+## Was bedeutet dereferenzieren?
+## Wann kommt es beim Dereferenzieren zu einer NullPointerException?
+## Welche Java Standard-Operationen gibt es?
+## Wie heißt der neue Datentyp, d. h. die neue Klasse, der für alle Objekte gilt?
+## Wie wird equals gut programmiert? Was fordert der Contract der API dazu?
+## Was erfordert der Contract der API zusätzlich, wenn equals programmiert ist?
+## Was soll in toString inhaltlich zurückgegeben werden?
