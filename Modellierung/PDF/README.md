@@ -498,7 +498,7 @@ public class EigeneRessourceBeispiel {
 ## Wie kann this auf zwei unterschiedliche Arten verwendet werden?
 <details>
     <summary>Antwort</summary>
-    - Aufruf eines anderen Konstruktors in derselben Klasse
+    - Aufruf eines anderen Konstruktors in derselben Klasse<br>
     - Unterscheidung zwischen Instanzvariablen und Methoden-/ Konstruktorparametern    
 </details>
 
