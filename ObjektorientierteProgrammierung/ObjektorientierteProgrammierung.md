@@ -297,3 +297,122 @@ Mit Import kann man **eine einzelne** Klasse oder **alle Klassen** eines Package
 
 
 ### Programmierhinweise
+#### Allgemein
+##### Klassen
+Klassen sind Schablonen 
+- und sollten daher von Außen parametisierbar sein. (Keine Werte in die Klasse selbst schreiben, sondern über Setter und Getter oder Konstruktor setzen)
+- und werden daher in Singular bezeichnet. (Erst durch die Erzeugung der Objekte einer Klasse gibt es viele Ausprägungen / Individuen / Instanzen / Objekte dieses Typs)
+
+
+Klassen sollten nicht zu groß sein, 
+- da man ansonsten die Funktionalität nicht überblicken kann
+- die Klasse zu spezifisch ist und somit nicht mehr als Schablone dienen kann
+
+##### Klassen Aufbau 
+```java
+// Vorlage für Klassendefinition
+// Package-Anweisung
+package meinPaket;
+// Import-Anweisung
+import anderePakete;
+//Klassendefinition
+/** Doc-Kommentar für die Klasse */
+public class KlassenName {
+    //Deklaration der Variablen
+    /** Doc-Kommentar für die konstante Klassenvariablen */
+    public final static int NAMEKONSTANTEVARIABLE = 100;
+    /** Doc-Kommentar für KlassenVariablen */
+    public static int NameKlassenVariable1;
+    private static int NameKlassenVariable2;
+    /** Doc-Kommentar für konstante InstanzVariablen */
+    public final int NameInstanzKonstante;
+    /** Doc-Kommentar für InstanzVariablen */
+    public int NameInstanzVariable1;
+    public int NameInstanzVariable2;
+
+    // Konstruktoren
+    /** Doc-Kommentar für Konstruktoren */
+    public KlassenName() {
+
+    }
+    // Öffentliche Methoden 
+    /** Doc-Kommentar für öffentliche KlassenMethoden */
+    public static void KlassenMethode() {
+
+    }
+    /** Doc-Kommentar für öffentliche InstanzMethode */
+    /** immer blockweise, 
+     * eigene Methoden,
+     * getter / setter und 
+     * zum Schluss clone/equal/toString, etc.
+    */
+    public static void InstanzMethode() {
+
+    }
+    // Private Methoden 
+    /** Kommentar für Private KlassenMethoden */
+    private static void privKlassenMethode() {
+
+    }
+    /** Kommentar für private InstanzMethoden */
+    private void privInstanzMethode() {
+
+    }
+    // Deklaration der Main-Methode (falls vorhanden) 
+    public static void main (String Args[]) {
+
+    }
+}
+```
+
+##### Packages 
+- Packages spiegeln die Struktur eines Projekts wieder, so dass 
+    - ähnliche Klassen in einem Package liegen  sollten.
+    - funktional zusammenhängende Klassen in einem Package liegen sollten.
+    - architektonische zusammengehörige Klassen in einem Package liegen sollten.
+
+##### Konstruktoren
+Kleinere Konstruktoren sollten
+- größere Konstruktoren aufrufen
+- die Default-Werte dem größeren Konstruktor übergeben
+- und daher nicht selbst Attribute setzen
+
+Konstruktoren sollten die eigenen Setter verwenden, wenn eine Wertüberprüfung für das jeweilige Attribut stattfindet
+
+##### Methoden
+- Methoden sollten nicht zu groß sein
+    - da man ansonsten die Fnktionalität nicht überblicken kann 
+    - die Methoden zu spezifisch sind und so Teilfunktionen nicht von anderen Methoden aufgerufen werden können 
+
+- Die Sichtbarkeit von Methoden sollte möglichst eingeschränkt werden
+    - so das man immer erst mit **private** beginnen sollte
+    - und erst, wenn andere Klassenn/Objekte die Methode verwenden wollen, diese als public bzw. bei Vererbung als protected deklariert
+
+- Getter / Setter sollten 
+    - nicht für interne Zustände einer Klasse definiert werden
+
+- Setter sollten 
+    - nur für nach Außen einzeln veränderbare Eigenschaften definiert werden 
+    - immer mögliche Wertebereichsüberprüfungen durchführen
+
+#### Vererbung & Polymorphie
+##### Konstruktoren geerbter Klassen 
+Konstruktoren geerbter Klassen sollten 
+- den Konstruktor der Oberklasse aufrufen
+- eventuelle Default-Werte dem Konstruktor mit übergeben 
+- und nur eigene Attribute, die nicht vererbt wurden, setzen 
+
+##### Geerbte Methoden & Attribute
+- Funktionen von geerbten Methoden sollten
+    - in der erbenden Klasse verwendet werden und nicht neu implementiert werden 
+    - können gegebenenfalls mit super.methodenaufruf(...) in die überschreibende Methode eingebunden werden 
+
+- Zugriff auf geerbte Attribute sollten durch geerbte Setter geschehen, wenn eine Wertüberprüfung für das jeweilige Attribut stattfindet
+
+##### Ploymorphie 
+- Polymorphie kann bei 
+    - der Verwaltung von Objekten ausgenutzt werden
+    - der Definitioin flexibler Methoden ausgenutzt werden 
+
+- Durch Casting 
+    - kann man Objekte auch unter verschiedenen Aspekten betrachten.
