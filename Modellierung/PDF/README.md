@@ -242,6 +242,37 @@ Die Methoden, die laut den Vorlesungen für uns am Wichtigsten sind, lauten `equ
 Die beiden Methoden `equals()` und `hashCode()` sind eng miteinander verknüpft und sollten immer zusammen implementiert werden. Sie definieren, wann zwei Objekte als gleichwertig betrachtet werden.
 
 ## Clone
+Die `clone()` Methode dient dazu, eine Kopie eines Objekts zu erstellen. um sie zu verwenden muss man das `Clonable-Marker-Interface` Implementieren. `Object.clone()` erstellt standardmäßig eine **flache** Kopie. dies bedeutet, dass nur primitive Typen direkt kopiert werden. Referenzen auf andere Objekte werden nur kopiert, nicht die Objekte selbst. Die Original- und die Kloininstanz teilen sich somit dieselben referenzierten Objekte (Siehe Oben unter Referenz, welche Problematik einhergehen kann).
+
+Die richtige Implementierung mit einer tiefen Kopie, wie wir sie für Komplexe Objekte brauchen, erzwingt es, dass `clonable` Interface zu implementieren und die Methode `clone()` zu überschreiben. Das ist mitunter ein Grund, warum die Methode als problematisch angesehen wird.
+
+```java
+class Adresse implements Cloneable {
+    String stadt;
+    
+    @Override public Adresse clone() throws CloneNotSupportedException {
+        return (Adresse) super.clone();
+    }
+}
+
+class Person implements Cloneable {
+    String name;
+    Adresse adresse;
+
+    @Override
+    public Person clone() throws CloneNotSupportedException {
+        // Schritt 1: Flache Kopie erstellen
+        Persone cloned = (Person) super.clone();
+
+        // Schritt 2: Die referenzierten Objekte tief kopieren
+        // Dies ist entscheident für eine Tiefe Kopie!
+        cloned.adresse = this.adresse.clone();
+
+        return cloned;
+    }
+}
+```
+Aufgrund der Komplexität und der Tatsache, dass `clone()` eine `protected` Methode ist, die eine speziellee Ausnahme wirft, wird heute oft empfohlen, stattdessen Kopierkonstruktoren oder Fabrikmethoden zu verwenden
 
 ## equals
 IN der Theorie vergleicht die `equals()` Methode zwei Objekte auf "Gleichheit". Die Standardimplementierung von `Object.equals()` vergleicht nur die Referenzen der Objekte (also, ob sie auf dieselbe Speicheradresse zeigen). Dies ist oft nicht das gewünschte Verhalten. In den allermeisten Fällen, möchte man, dass Objekte als gleichwertig gelten, wenn ihre Zustände (die Attribute eines Objekts) gleich sind, unabhängig davon, ob es sich um dieselbe Instanz handelt.
