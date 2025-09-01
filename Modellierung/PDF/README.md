@@ -266,6 +266,36 @@ if (p1.equals(p2))
     // Wird nicht ausgeführt.
 ```
 
+### Für eine Richtige Implementierung:
+Man muss die `equals()`-Methode überschreiben, um die Gleichheit basierend auf den Attributen des Objekts zu definieren. Die Regeln, die dabei befolgt werden müssen, sind streng:
+**Regeln**
+* Die Implementierung mus Reflexiv sein, dass bedeutet `x.equals(x)` muss `true` sein!
+* Symmetrisch: wenn `x.equals(y) == true` muss auch `y.equals(x) == true` sein.
+* Transitiv: Wenn `x.equals(y) == true` und `y.equals(z) == true` muss auch `x.equals(z) == true` sein.
+* Konsistent: Mehrmalige Aufrufe von `x.equals(y)` müssen das selbe Ergebnis liefern.
+* `null`-Vergleich: `x.equals(null)` muss immer `false` sein.
+
+eine Konkrete Implementierung einer `equals` Methode, sieht zum Beispiel so aus:
+***Richtige Implementierung***
+```java
+@Override
+public boolean equals(Object o) {
+    // 1. Prüfen wir auf Identität!
+    if(this == o) return true;
+    
+    // 2. Prüfen wir auf Null und unterschiedliche Klassen!
+    if(o == null) || getClass() != o.getClass()) return false;
+
+    // Casten auf den richtigen typ.
+    Person oP = (Person) o;
+
+    // 3. Vergleich der verschiedenen Attribute!
+    // Bei primitiven Typen mit ==
+    // Bei Objekten mit equals()
+    return this.alter == oP.alter && this.name.equals(oP.name);
+}
+```
+
 ## hashCode
 
 ## toString
