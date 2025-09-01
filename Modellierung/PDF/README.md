@@ -292,12 +292,12 @@ public boolean equals(Object o) {
     // 3. Vergleich der verschiedenen Attribute!
     // Bei primitiven Typen mit ==
     // Bei Objekten mit equals()
-    return this.alter == oP.alter && this.name.equals(oP.name);
+    return this.alter == oP.alter && Object.equals(this.name, oP.name);
 }
 ```
 
 ## hashCode
-
+Die Theorie hinter der `hashCode()` Methode ist, dass die Methode eine ganze Zahl (Einen Hash-Code) zurück gibt. Sie soll hauptsächlich in Hash-basierten Datenstrukturen wie `HashMap` und `HashSet` verwendet werden. Der Hash-Code hilft, Objekte effizient in diesen Strukturen zu finden. Die wichtigste Regel lautet:  **Wenn zwei Objekte
 ## toString
 
 ## finalize
