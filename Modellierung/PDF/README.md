@@ -484,6 +484,14 @@ public class EigeneRessourceBeispiel {
 
 # Lernziele aus der VL
 ## Wie kann das Geheimnisprinzip umgesetzt werden?
+<details>
+    <summary>Antwort</summary>
+
+    
+    Mittels Setter und Getter, dafür müssen die Variablen `private` sein.
+    
+</details>
+
 ## Welche OO-Verwaltungsmethoden gibt es?
 ## Wie kann this auf zwei unterschiedliche Arten verwendet werden?
 ## Wie sollte ein guter Initialisierungskonstruktor implementiert werden?
