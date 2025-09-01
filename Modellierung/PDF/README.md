@@ -486,20 +486,75 @@ public class EigeneRessourceBeispiel {
 ## Wie kann das Geheimnisprinzip umgesetzt werden?
 <details>
     <summary>Antwort</summary>
-
-    
     Mittels Setter und Getter, dafür müssen die Variablen `private` sein.
-    
 </details>
 
 ## Welche OO-Verwaltungsmethoden gibt es?
+<details>
+    <summary>Antwort</summary>
+    toString, equals, hashCode, Initialisierungskonstruktor, Default-Konstruktor    
+</details>
+
 ## Wie kann this auf zwei unterschiedliche Arten verwendet werden?
+<details>
+    <summary>Antwort</summary>
+    - Aufruf eines anderen Konstruktors in derselben Klasse
+    - Unterscheidung zwischen Instanzvariablen und Methoden-/ Konstruktorparametern    
+</details>
+
 ## Wie sollte ein guter Initialisierungskonstruktor implementiert werden?
+<details>
+    <summary>Antwort</summary>
+    - Alle Attribute Initialisieren
+    - Verwendung von this um zwischen den Attributen der Klasse und den lokalen Parametern zu unterscheiden.
+    - Parameter sollten in einer Logischen Reihenfolge angeordnet sein
+    - Eine grundlegende Validierung der übergebenen Parameter, ggf. mit geeignetem Exception handling
+</details>
+
 ## Wie sollten Konstruktoren überladen werden? Welche Rolle spielt this dabei?
+<details>
+    <summary>Antwort</summary>
+Konstruktoren sollten überladen werden, um verschiedene Wege zu bieten, ein Objekt zu initialisieren, basierend auf unterschiedlichen Parametern. Das this()-Schlüsselwort spielt dabei eine zentrale Rolle, indem es redundanten Code eliminiert.
+</details>
+
 ## Was bedeutet dereferenzieren?
+<details>
+    <summary>Antwort</summary>
+Dereferenzieren bedeutet, dem "Verweis" oder der "Adresse" eines Objekts im Speicher zu folgen, um auf das tatsächliche Objekt zuzugreifen.
+</details>
+
 ## Wann kommt es beim Dereferenzieren zu einer NullPointerException?
+<details>
+    <summary>Antwort</summary>
+Eine NullPointerException tritt auf, wenn versucht wird, eine Referenz zu dereferenzieren, die den Wert `null` hat.
+</details>
+
 ## Welche Java Standard-Operationen gibt es?
-## Wie heißt der neue Datentyp, d. h. die neue Klasse, der für alle Objekte gilt?
+<details>
+    <summary>Antwort</summary>
+equals, hashCode, toString und clone.
+</details>
+
+## Wie heißt der neu eingeführte Datentyp, der für alle Objekte gilt?
+<details>
+    <summary>Antwort</summary>
+Object. (Super schwer herauszufiltern)
+</details>
+
 ## Wie wird equals gut programmiert? Was fordert der Contract der API dazu?
+<details>
+    <summary>Antwort</summary>
+Die equals()-Methode wird dann gut programmiert, wenn sie die inhaltliche Gleichheit von zwei Objekten prüft. Sie sollte nicht die Standardimplementierung der Object-Klasse verwenden, die nur Referenzgleichheit vergleicht.
+</details>
+
 ## Was erfordert der Contract der API zusätzlich, wenn equals programmiert ist?
+<details>
+    <summary>Antwort</summary>
+Wenn die equals() Methode überschrieben wird, muss auch hashCode überschrieben werden.
+</details>
+
 ## Was soll in toString inhaltlich zurückgegeben werden?
+<details>
+    <summary>Antwort</summary>
+In der toString()-Methode sollte eine lesbare und informative String-Repräsentation des Objekts zurückgegeben werden. Der Inhalt sollte den aktuellen Zustand des Objekts widerspiegeln, indem er die Werte seiner relevanten Attribute anzeigt.
+</details>
