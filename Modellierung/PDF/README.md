@@ -505,9 +505,9 @@ public class EigeneRessourceBeispiel {
 ## Wie sollte ein guter Initialisierungskonstruktor implementiert werden?
 <details>
     <summary>Antwort</summary>
-    - Alle Attribute Initialisieren
-    - Verwendung von this um zwischen den Attributen der Klasse und den lokalen Parametern zu unterscheiden.
-    - Parameter sollten in einer Logischen Reihenfolge angeordnet sein
+    - Alle Attribute Initialisieren<br>
+    - Verwendung von this um zwischen den Attributen der Klasse und den lokalen Parametern zu unterscheiden.<br>
+    - Parameter sollten in einer Logischen Reihenfolge angeordnet sein<br>
     - Eine grundlegende Validierung der übergebenen Parameter, ggf. mit geeignetem Exception handling
 </details>
 
