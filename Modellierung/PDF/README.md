@@ -329,7 +329,7 @@ class Person {
     }
 }
 ```
-Kopierkonstruktoren werden immer aufgerufen um eine neue Referenz zu schaffen, so werden seperate Instanzen erstellt.
+Kopierkonstruktoren werden immer aufgerufen um eine neue Referenz zu schaffen, so werden seperate Instanzen erstellt.‚
 
 
 ## equals
@@ -413,3 +413,61 @@ public String toString() {
 ```
 
 ## finalize
+Die `finalize()` Methode sollte vom Garbage Collector aufgerufen werden, bevor ein Objekt aus dem Speicher entfernt wird. Sie war als Mechanismus gedacht, um Ressourcen freizugeben (File-Handles oder Netzwerkverbindungen).
+
+Problematik:
+Die Verwendung von `finalize()` ist **Stark veraltet** und wird **nicht mehr empfohlen**, da sie in Java 9 als veraltet (`@Deprecated`) markiert und in neueren Versionen entfernt wurde.
+* Unzuverlässig: Es gibt keine Garantie, dass `finalize()` jemals aufgerufen wird.
+* Performance: Die verwendung von `finalize()`kann die Leistung des Garbage Collctors **erheblich** beeinträchtigen
+* Sicherheitsrisiken: Objekte können durch `finalize()` wiederbelebt werden, was zu leaks führen kann.
+
+Die Moderne:
+Die mittlerweile Moderne Lösung dafür ist die `try-with-resources` anweisung für die automatische freigabe von Ressourcen zu benutzen, die das `AutoCloseable`-Interface implementieren. Dieses Konstrukt stellt sicher, dass eine Ressource am Ende des try-Blocks freigegeben wird, unabhängig davon, ob der Block normal oder durch eine Ausnahme beendet wird.
+
+Ein Beispiel dafür sieht so aus:
+```java
+public static void main(String[] args) {
+        // Deklaration der Ressource direkt im try-Block
+        try (BufferedReader br = new BufferedReader(new FileReader("beispiel.txt"))) {
+            String zeile;
+            while ((zeile = br.readLine()) != null) {
+                System.out.println(zeile);
+            }
+        } catch (IOException e) {
+            // Automatischer Aufruf von br.close() bei jeder Ausnahme oder normalem Verlassen des Blocks
+            e.printStackTrace();
+        }
+    }
+```
+
+Wir haben hier mal eine schöne Darstellung von Gemini erstellen lassen, um das Ressourcen Management mit `AutoCloseable` zu veranschaulichen.
+
+**Java von Gemini**
+```java
+class MeineRessource implements AutoCloseable {
+    
+    public MeineRessource() {
+        System.out.println("Ressource wird geöffnet.");
+    }
+    
+    public void tuEtwas() {
+        System.out.println("Ressource ist in Gebrauch.");
+    }
+    
+    @Override
+    public void close() {
+        System.out.println("Ressource wird geschlossen.");
+    }
+}
+
+public class EigeneRessourceBeispiel {
+    public static void main(String[] args) {
+        // Die eigene Ressource wird automatisch geschlossen
+        try (MeineRessource res = new MeineRessource()) {
+            res.tuEtwas();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
