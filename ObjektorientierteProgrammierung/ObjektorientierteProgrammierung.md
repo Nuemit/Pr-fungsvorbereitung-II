@@ -232,10 +232,24 @@ public void zaehleBuchstaben {
     }
 }
 // yield muss dann aber wenn einmal benutzt in jeder Switch-Anweisung vorkommen! 
-
-
 ```
  
+Switch-Ausdrücke kann man auch mit Objekten verwenden. Außerdem ist sind Switch-Ausdrücke in der Lage mittels **Pattern Matching** Typentests (Test ob Int, String, NULL, ...) zu machen und diese dann auch direkt an Variablen zu binden. 
+
+#### Zu den Grundlegenden Klassen in Java zählen auch String, StringBuilder, StringBuffer diese sind in einem Anderen Foliensatz behandelt worden. 
+
+#### Collection-Framework ist in einem anderen Foliensatz 
+
+#### I/O-Framework ist in einem anderen Foliensatz
+
 
 ### Packages
+- Ab Java 9 -> 21. September 2017
+- Dienen zu Vermeidung von Namenskonflikten 
+- Dienen zur Strukturierung eines Programms bzw. der Klassen 
+- Dienen zur einfachen Verbreitung zusammengehöriger Klassen 
+
+#### Packages & File-Systems
+
+
 ### Programmierhinweise
