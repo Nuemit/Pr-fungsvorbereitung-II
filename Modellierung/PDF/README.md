@@ -297,7 +297,28 @@ public boolean equals(Object o) {
 ```
 
 ## hashCode
-Die Theorie hinter der `hashCode()` Methode ist, dass die Methode eine ganze Zahl (Einen Hash-Code) zurück gibt. Sie soll hauptsächlich in Hash-basierten Datenstrukturen wie `HashMap` und `HashSet` verwendet werden. Der Hash-Code hilft, Objekte effizient in diesen Strukturen zu finden. Die wichtigste Regel lautet:  **Wenn zwei Objekte
-## toString
+Die Theorie hinter der `hashCode()` Methode ist, dass die Methode eine ganze Zahl (Einen Hash-Code) zurück gibt. Sie soll hauptsächlich in Hash-basierten Datenstrukturen wie `HashMap` und `HashSet` verwendet werden. Der Hash-Code hilft, Objekte effizient in diesen Strukturen zu finden. Die wichtigste Regel lautet:  **Wenn zwei Objekte nach `equals()` gleich sind, MÜSSEN sie denselben Hash-Code haben!**
 
+Der Hash-Code sollte aus den gleichen Attributen berechnet werden, die auch im `equals()` Vergleich verwendet werden.
+**Beispielimplementierung von Person(siehe oben)**
+```java
+// ...
+@Override
+public int hashCode() {
+    // für die Berechnung ist die Standardbibliothek java.util.Objects.hash() der einfachste und sicherste weg.
+    return Objects.hash(name, alter);
+}
+```
+## toString
+Die Theorie: Die `toString()` Methode liefert eine String-Repräsentation eines Objekts. Die Standardimplementierung gibt den klassennamen und den Hash-Code des Objekts zurück, was selten nützlich ist. `toString()` wird häufig zu Debugging zwecken und zur Protokollierung verwendet.
+
+**Beispielimplementierung**
+```java
+@Override
+public String toString() {
+    return "Person{\n"+
+        "name='"+ this.name+ "\'\n" +
+        "alter="+ this.alter + "\n" +
+        "}"
+}
 ## finalize
