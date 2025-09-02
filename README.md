@@ -6,6 +6,7 @@ Außerdem empfehlen wir, mal in die [Youtube Playlist](https://youtube.com/playl
 
 # Modellierung
 Datei: [Modellierung.md](01_Modellierung-Done/PDF)
+
 Bezieht sich auf die erste Vorlesung von Prog-II, es wird auf die folgenden Themen eingegangen:
 - Objektorientierung
 - Klassen
@@ -19,3 +20,9 @@ Bezieht sich auf die erste Vorlesung von Prog-II, es wird auf die folgenden Them
 - Instanz- und Klassen-Member
 - Standardoperationen
 - Lernziele aus dem ersten Foliensatz.
+
+# Vererbung
+
+# Abstrakte Klassen
+
+# Interfaces
