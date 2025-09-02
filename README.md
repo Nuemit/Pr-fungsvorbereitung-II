@@ -6,3 +6,16 @@ Außerdem empfehlen wir, mal in die [Youtube Playlist](https://youtube.com/playl
 
 # Modellierung
 Datei: [Modellierung.md](01_Modellierung-Done/PDF)
+Bezieht sich auf die erste Vorlesung von Prog-II, es wird auf die folgenden Themen eingegangen:
+- Objektorientierung
+- Klassen
+- Arrays
+- Komplexe Datentypen
+- Referenzierung
+- Dereferenzierung
+- Verwaltungsmethoden
+- Call-By-Value
+- Call-By-Reference
+- Instanz- und Klassen-Member
+- Standardoperationen
+- Lernziele aus dem ersten Foliensatz.
