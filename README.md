@@ -22,6 +22,17 @@ Bezieht sich auf die erste Vorlesung von Prog-II, es wird auf die folgenden Them
 - Lernziele aus dem ersten Foliensatz.
 
 # Vererbung
+Datei: [Vererbung.md](02_Vererbung-Done/PDF)
+
+Bezieht sich auf die vierte Vorlesung von Prog-II, es wird auf die folgenden Themen eingegangen:
+- Was bedeutet das Keyword `abstract`
+- Merkmale von Abstrakten Klassen
+- Unterschiede zu `Interface`s
+- Polymorphie
+- Konvertierung von Referenzvariablen
+- Klasse `Object`
+- `abstract` Mehtoden
+- Eigenschaften von abstrakten Klassen
 
 # Abstrakte Klassen
 
