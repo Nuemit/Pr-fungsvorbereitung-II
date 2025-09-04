@@ -558,3 +558,6 @@ Wenn die equals() Methode überschrieben wird, muss auch hashCode überschrieben
     <summary>Antwort</summary>
 In der toString()-Methode sollte eine lesbare und informative String-Repräsentation des Objekts zurückgegeben werden. Der Inhalt sollte den aktuellen Zustand des Objekts widerspiegeln, indem er die Werte seiner relevanten Attribute anzeigt.
 </details>
+
+# Notiz
+Cast könnte man noch als extra punkt hinzufügen.
