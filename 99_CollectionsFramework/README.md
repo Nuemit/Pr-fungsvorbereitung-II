@@ -267,7 +267,8 @@ public class ComparatorExample {
         Collections.sort(customers, Comparator.comparing(CustomerVO::getLastName)
                                                 .thenComparing(CustomerVO::getFirstName));
     }
-}```
+
+```
 
 
 # Fragen
