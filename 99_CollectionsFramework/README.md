@@ -198,6 +198,11 @@ int compare(Object o1, Object o2);
 ```
 zu implementieren. Dabei unterliegt `compare()` den gleichen Bedingungen wie `compareTo()`. Eine Instanz der Klasse `Comparator` kann an sortierte Kollektionen wie z.B. `TreeSet` oder Methoden wie `Collections.sort(List<T> list, Comparator<? super T> c)` übergeben werden.
 
+Die Implementierung der Methode gibt einen `int`-Wert zurück, der die Sortierreihenfolge anzeigt:
+- Negativer Wert: Das aktuelle Objekt ist **kleiner** als das übergebene Objekt.
+- Null: Die beiden Objekte sind **Gleich**
+- Positiver Wert: Das aktuelle Objekt ist **größer** als das übergebene Objekt.
+
 Dieses Interface ist ein "Funktionales" Interface, bedeutet - dass es nicht nur die Abstrakte Methode `compare` liefert, sondern auch `default` und `statische` Mehtoden anbietet. 
 
 So zum Beispiel die Methode `comparing`, diese nimmt eine Methode `keyExtraktor` entgegen, die aus einem Objekt einen Comparable-Schlüssel extrahiert, und liefert einen `Comparator` zurück.
@@ -225,6 +230,44 @@ public static void main(String[] args) {
 }
 ```
 
+Unser lieber freund Gemini hat das Beispiel mal bearbeitet:
+```java
+import java.util.Comparator;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.time.LocalDate;
+
+// Angenommen, diese Klasse existiert
+class CustomerVO {
+    private String firstName;
+    private String lastName;
+    private LocalDate dateOfBirth;
+
+    // ... Konstruktor, Getter etc.
+    // Comparable ist hier nicht implementiert
+}
+
+public class ComparatorExample {
+    public static void main(String[] args) {
+        List<CustomerVO> customers = new ArrayList<>();
+        // ... Kundenobjekte hinzufügen
+
+        // Sortierung nach Nachname
+        // Die moderne, kürzeste und bevorzugte Syntax
+        // Die statische Methode comparing() erstellt den Comparator für uns
+        Collections.sort(customers, Comparator.comparing(CustomerVO::getLastName));
+    
+        // Sortierung nach Geburtsdatum
+        // Dies funktioniert, da LocalDate auch Comparable implementiert
+        Collections.sort(customers, Comparator.comparing(CustomerVO::getDateOfBirth));
+
+        // Sortierung nach mehreren Kriterien
+        // Zuerst nach Nachname, dann bei gleichem Nachname nach Vorname
+        Collections.sort(customers, Comparator.comparing(CustomerVO::getLastName)
+                                                .thenComparing(CustomerVO::getFirstName));
+    }
+}```
 
 
 # Fragen
