@@ -50,6 +50,27 @@ Dabei ist es Wichtig zu erwähnen, das diese in die untergruppen von `java.util.
 
 `java.util.List` Beschreibt eine Reihung von Objekten.
 
+Eine Implementierung für `java.util.ArrayList` sieht folgendermaßen aus
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void Main(String[] args) {
+        ArrayList<String> people = new ArrayList<>();
+        
+        people.add("John");
+        people.add("Dave");
+        people.add("Sam");
+
+        people.remove("Dave");
+        // oder
+        people.remove(1);
+    }
+}
+```
+
+Die remove Operation, hat eine Zeitkomplexität von O(N).
+
 `java.util.Set` ist mit Mathemathischen Mengen zu vergleichen, in den ein Element oder Objekt nur einmal vorkommen darf.
 
 `java.util.Map` sind Schlüssel- oder Element- Paare, so dass jedes Objekt unter einem Namen oder Schlüssel zu referenzieren ist.
@@ -62,4 +83,37 @@ Wir gehen davon aus, das folgende Klassen eine rolle in der Klausur spieln könn
 * HashSet
 * TreeSet
 
-Alles was die TypSicherheit von `Generics` betrifft findet ihr [Hier](/Generics)
+Alles was die TypSicherheit von `Generics` betrifft findet ihr [Hier](/Generics), das ist auch ein Prägnanter teil des Collection Frameworks. 
+
+**Definition: Entwurfsmuster** sind bewährte generische Lösung für ein immer
+wiederkehrendes Entwurfsproblem, das in bestimmten Situationen
+auftritt. 
+Das Collection Framework setzt das Entwurfsmuster `Iterator` ein.
+
+Implementierungen des Interface `java.lang.Iterable` können als Iterator-Typ einer foreach-Schleife genutzt werden. Zudem liefern sie für die Verwalteten Objekte, einen Aufzählungsoperator `java.util.Iterator` zurück.
+Dabei verweist ein **Iterator** nach der Initialisierung immer auf den Anfang einer FOlge und kann jederzeit überprüfen ob es ein Nachfolgeelement gibt. Mit der Methode `next()` wird das direkte Nachfolgeelement zurückgegeben und springt dann zu diesem.
+
+Der `ListIterator` erbt vom `Iterator`, dieser Iterator bietet für alle `List`-Typen die möglichkeit, eine Liste rückwärts zu durchlaufen. Er arbeitet mit den Indizes der Elemente und kann somit bei der Initialisierung auf ein Start-Ellement gesetzt werden.
+
+Beispielimplementation
+```java
+import java.util.List;
+// ...
+
+List<CD> cdSammlung = new LinkedList<CD>();
+CD aktuelleCD;
+
+// Objekterzeugung für Iterator
+Iterator<CD> cdIterator = cdSammlung.iterator();
+
+// Schleife: Überprüfen ob noch ein element in Collection ist.
+while(cdIterator.hasNext()) {
+    aktuelleCD = cdIterator.next();
+}
+```
+Für jede `Collection` lassen sich beliebig viele Iteratoren erzeugen.
+- Iterator iterator()
+mit deren Hilfe, alle Elemente einer Collection vorwärts (ListIterator auch Rückwärts) durchlaufen werden können.
+- Die im `Collection`-Framework enthaltenen Klassen Implementieren alle das `Iterator-Interface` als private [Member-Klassen](https://github.com/Nuemit/Pr-fungsvorbereitung-II/tree/master/01_Modellierung-Done/PDF#instanz--und-klassen-member). 
+- Da die Iterator-Member-Klasse privat deklariert ist und Ihre Objekte nur über Interface-Referenzen nach außen liefert, bleibt die Konkrete Iterator Klasse von außen unsichtbar.
+- Werden operationen auf einer Collection ausgeführt, werden alle Iteratoren ungültig, bis auf den iterator, über den die Operation ausgeführt wurde. Die weitere Nutzung eines Operators der nicht die Operation durchgeführt hat, würde die `ConcurrentModificationException` werfen.
