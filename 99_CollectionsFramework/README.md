@@ -117,3 +117,25 @@ mit deren Hilfe, alle Elemente einer Collection vorwärts (ListIterator auch Rü
 - Die im `Collection`-Framework enthaltenen Klassen Implementieren alle das `Iterator-Interface` als private [Member-Klassen](https://github.com/Nuemit/Pr-fungsvorbereitung-II/tree/master/01_Modellierung-Done/PDF#instanz--und-klassen-member). 
 - Da die Iterator-Member-Klasse privat deklariert ist und Ihre Objekte nur über Interface-Referenzen nach außen liefert, bleibt die Konkrete Iterator Klasse von außen unsichtbar.
 - Werden operationen auf einer Collection ausgeführt, werden alle Iteratoren ungültig, bis auf den iterator, über den die Operation ausgeführt wurde. Die weitere Nutzung eines Operators der nicht die Operation durchgeführt hat, würde die `ConcurrentModificationException` werfen.
+
+## Iteration - foreach-Schleife
+Man kann mit `for` neben einer normalen Schleife, ebenso eine `foreach` schleife für Arrays und Collections erzeugen. Diese Schleifen sind spezialisierte `for`-Schleifen, um alle Elemente eines Arrays/einer Collection sequentiell zu durchlaufen.
+
+Das Sprachkonstrukt einer foreach Schleife sieht folgendermaßen aus:
+```java
+for(DatenTyp element: collectionName) {
+    // Anweisungen
+}
+```
+
+Ein Konkretes beispiel wäre:
+```java
+ArrayList<String> namen = new ArrayList<>();
+namen.add("John");
+namen.add("Ori");
+namen.add("Mordekeiser");
+
+for(String element: namen) {
+    System.out.println(element);
+}
+```
