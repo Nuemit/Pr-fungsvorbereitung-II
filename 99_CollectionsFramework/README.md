@@ -143,4 +143,107 @@ Diese Methode kann einen `NullPointerException` auslösen, wenn es keine Anweisu
 
 Dise Form einer `foreach` wird auch eine *interne Iteration* genannt. Java Entwickler haben die möglichkeit, die `forEach` Methode in einem Iterable-Container geeignet zu überschreiben, um Effizienzgewinne zu erzielen.
 
-## Vergleich von Objekten.
+## Vergleich von Objekten
+Objekte können verglichen werden, um Sie in einer sortierbaren Collection zu sortieren.
+
+Hierzu gibt es die Möglichkeit
+- Dass die zu Sortierenden Objekte, das Interface `Comparable` zu implementieren
+- Dass die sortierbare Collection einen `Comparator` besitzt.
+
+### Comparable - `java.lang.Comparable`
+Dieses Interface erlegt den Objekten jeder Klasse, die das Interface implementiert, eine totale Ordnung auf. Diese Ordnung wird als die "Natürliche Ordnung" der Klasse angesehen und die compareTo mEthode der Klasse wird als ihre natürliche Vergleichsmethode genannt.
+
+Der Contract den jede Klasse mit dem interface eingeht ist, dass die Methode
+```java
+// Compares this object with the specified object for order.
+int compareTo(T o)
+```
+Implementiert sein muss. Bekannt Beispiele sind `String`, `Date`, `LocalDate`, `BigDecimal` und alle Wrapper-Klassen für einfache Datentypen.
+
+Die Implementierung der Methode gibt einen `int`-Wert zurück, der die Sortierreihenfolge anzeigt:
+- Negativer Wert: Das aktuelle Objekt ist **kleiner** als das übergebene Objekt.
+- Null: Die beiden Objekte sind **Gleich**
+- Positiver Wert: Das aktuelle Objekt ist **größer** als das übergebene Objekt.
+
+Zudem sollten die Methoden `compareTo()` und `equals()` Gleichheit übereinstimmend definieren.
+Im Gegensatz zu `equals()`, das bei `null` den wert `false` zurück gibt, sollte die MEthode, wenn der Parameter `o = null`ist, mit einer `NullPointerException` reagieren.
+Im Gegensatz zu `equals()`, das bei klassen-Unverträglichkeit `false` zurück gibt, sollte die Methode bei Klassen-Unverträglichkeit mit `ClassCastException` reagieren.
+
+**Beispiel**
+```java
+public. class Auto implements Comparable<Auto> {
+    // Variablen und Konstruktor
+    // ...
+
+    // Die compareTo() - Methode muss implementiert werden!
+    @Override
+    public int compareTo(Auto anderesAuto) {
+        // Vergleich von z.B. Baujahr
+        // Die Differenz gibt direkt die richtige Reihenfolge an.
+        return this.getBaujahr() - anderesAuto.getBaujahr();
+
+        // Alternativ und sicherer (um Integer Overflow zu vermeiden)
+        return Integer.compare(this.getBaujahr(), anderesAuto.getBaujahr());
+    }
+}
+```
+`java.lang.Comparable` ist für die Natürliche Reihenfolge eines Objekts gedacht. Das kriterium legt der Entwickler selbst fest.
+
+### Comparator - `java.util.comparator`
+Das Interface `Comparator` sollte definiert werden, wenn eine Klasse keine natürliche Ordnung hat oder eine natürliche Ordnung einer Klasse durch eine eigene (Zusätzliche) ersetzt werden soll.
+
+Der contract zwingt der Klasse auf
+```java
+int compare(Object o1, Object o2);
+```
+zu implementieren. Dabei unterliegt `compare()` den gleichen Bedingungen wie `compareTo()`. Eine Instanz der Klasse `Comparator` kann an sortierte Kollektionen wie z.B. `TreeSet` oder Methoden wie `Collections.sort(List<T> list, Comparator<? super T> c)` übergeben werden.
+
+Dieses Interface ist ein "Funktionales" Interface, bedeutet - dass es nicht nur die Abstrakte Methode `compare` liefert, sondern auch `default` und `statische` Mehtoden anbietet. 
+
+So zum Beispiel die Methode `comparing`, diese nimmt eine Methode `keyExtraktor` entgegen, die aus einem Objekt einen Comparable-Schlüssel extrahiert, und liefert einen `Comparator` zurück.
+
+**Beispiel aus der Vorlesung**
+```java
+public static void main(String[] args) {
+    List<CustomerVO> arrayListCustomers = new ArrayList<CustomerVO>();
+    // Liste mit Objekten befüllen
+
+    // Sortieren nach natürlicher Ordnung
+    Collections.sort(arrayListCustomers);
+
+    // Sortierung nach Nachname
+    Collections.sort(arrayListCustomers, 
+        new Comparator<CustomerVO>()  {
+            public int compare(CustomerVO x, CustomerVO y) {
+                return x.getLastName().compareTo(y.getLastName());
+            }
+        });
+    
+    // Sortierung nach Geburtsname
+    Collections.sort(arrayListCustomers, (x,y) -> 
+        x.getDateOfBirth().compareTo(y.getDateOfBirth()));
+}
+```
+
+
+
+# Fragen
+## Was zeichnet ein Framework aus?
+
+## Wozu dient das Collection-Framework?
+
+## Welche Haupt-Typen gibt es im Collection-Framework?
+
+## Wann wählt man welche Ausprägung einer Collection?
+
+## Beschreiben Sie die die Funktion eines Iterators
+
+## Wie sieht die foreach-Schleife aus?
+
+## Welche Typen darf man in der foreach-Schleife verwenden?
+
+## Was ist der Unterschied zu der forEach-Methode in dem Interface Iterable?
+
+## Wie können die Elemente einer Collection sortiert werden?
+
+## Was ist eine natürliche Ordnung und wie kann sie hergestellt werden?
