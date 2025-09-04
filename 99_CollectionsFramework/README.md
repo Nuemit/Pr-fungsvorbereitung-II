@@ -128,14 +128,19 @@ for(DatenTyp element: collectionName) {
 }
 ```
 
-Ein Konkretes beispiel wäre:
+Ein Konkretes beispiel für das CollectionFramework findet ihr auch im Beispielcode.
 ```java
-ArrayList<String> namen = new ArrayList<>();
-namen.add("John");
-namen.add("Ori");
-namen.add("Mordekeiser");
+List<String> namen = new LinkedList<>();
 
-for(String element: namen) {
-    System.out.println(element);
-}
+namen.add("Anna");
+namen.add("John");
+namen.add("Komiker")
+
+namen.forEach(name -> System.out.println(name));
 ```
+
+Diese Methode kann einen `NullPointerException` auslösen, wenn es keine Anweisung gibt.
+
+Dise Form einer `foreach` wird auch eine *interne Iteration* genannt. Java Entwickler haben die möglichkeit, die `forEach` Methode in einem Iterable-Container geeignet zu überschreiben, um Effizienzgewinne zu erzielen.
+
+## Vergleich von Objekten.

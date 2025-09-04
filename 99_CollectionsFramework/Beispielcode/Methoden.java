@@ -4,6 +4,10 @@ import java.util.List;
 public class Methoden {
 
     public static void main(String[] args) {
+        forEachBeispiel();
+    }
+
+    public static void forEachBeispiel() {
         List<String> namen = new LinkedList<>();
 
         namen.add("Amir");
