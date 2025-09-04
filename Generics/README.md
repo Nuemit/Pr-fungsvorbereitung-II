@@ -1,3 +1,6 @@
+# Generics
+Generics gehören unmittelbar mit dem Collection Framework zusammen.
+
 ## Prog Fragen
 
 **1. Wofür verwendet man Generics?**

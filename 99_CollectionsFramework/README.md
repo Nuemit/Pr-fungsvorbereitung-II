@@ -1,0 +1,2 @@
+# Collection Framework
+Dieses Youtube [Video](https://m.youtube.com/watch?v=viTHc_4XfCA&pp=ygUaamF2YSBjb2xsZWN0aW9ucyBmcmFtZXdvcms%3D) geht sehr gut darauf ein was das Collection Framework anbietet um mit Datenstrukturen zu arbeiten.
