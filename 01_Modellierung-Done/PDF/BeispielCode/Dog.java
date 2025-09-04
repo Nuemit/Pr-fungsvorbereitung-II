@@ -48,10 +48,12 @@ public class Dog {
         return this.age;
     }
 
+    @Override
     public String toString () {
         return "This is a " + this.age + " year old Dog." + "His name is " +this.name +".";
     }
 
+    @Override
     public boolean equals (Object obj) {
         // 1. Checking if this passed in Object is the same as the Object, the code is currently running on.
         if (this == obj) {
@@ -75,7 +77,8 @@ public class Dog {
                 Objects.equals(this.getColor(),         other.getColor())   &&
                 Objects.equals(this.getNumberOfLegs(),  other.getNumberOfLegs());
     }
-
+    
+    @Override
     public int hashCode() {
         int hashCodeWert = 17;
         final int hashMulti = 59;
