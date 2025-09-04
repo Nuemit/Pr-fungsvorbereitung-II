@@ -46,7 +46,7 @@ Datei: [Vererbung.md](02_AbstrakteKlassen)
 
 Bezieht sich auf die vierte Vorlesung von Prog-II
 <details>
-    <summary>Antwort</summary>
+    <summary>Themen</summary>
 - Was bedeutet das Keyword `abstract`
 - Merkmale von Abstrakten Klassen
 - Unterschiede zu `Interface`s
