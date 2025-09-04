@@ -62,4 +62,4 @@ Wir gehen davon aus, das folgende Klassen eine rolle in der Klausur spieln könn
 * HashSet
 * TreeSet
 
-Alles was die TypSicherheit von `Generics` betrifft findet ihr [Hier](Generics)
+Alles was die TypSicherheit von `Generics` betrifft findet ihr [Hier](/Generics)
