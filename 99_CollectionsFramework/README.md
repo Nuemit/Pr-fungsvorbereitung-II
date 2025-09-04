@@ -229,21 +229,61 @@ public static void main(String[] args) {
 
 # Fragen
 ## Was zeichnet ein Framework aus?
+<details>
+    <summary>Antwort</summary>
+
+</details>
 
 ## Wozu dient das Collection-Framework?
+<details>
+    <summary>Antwort</summary>
+
+</details>
 
 ## Welche Haupt-Typen gibt es im Collection-Framework?
+<details>
+    <summary>Antwort</summary>
+
+</details>
 
 ## Wann wählt man welche Ausprägung einer Collection?
+<details>
+    <summary>Antwort</summary>
+
+</details>
 
 ## Beschreiben Sie die die Funktion eines Iterators
+<details>
+    <summary>Antwort</summary>
+
+</details>
 
 ## Wie sieht die foreach-Schleife aus?
+<details>
+    <summary>Antwort</summary>
+
+</details>
 
 ## Welche Typen darf man in der foreach-Schleife verwenden?
+<details>
+    <summary>Antwort</summary>
+
+</details>
 
 ## Was ist der Unterschied zu der forEach-Methode in dem Interface Iterable?
+<details>
+    <summary>Antwort</summary>
+
+</details>
 
 ## Wie können die Elemente einer Collection sortiert werden?
+<details>
+    <summary>Antwort</summary>
+
+</details>
 
 ## Was ist eine natürliche Ordnung und wie kann sie hergestellt werden?
+<details>
+    <summary>Antwort</summary>
+
+</details>
