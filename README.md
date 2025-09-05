@@ -4,13 +4,13 @@ Ergänzend zu den Inhalten innerhalb dieses repos findet ihr alle Inhalte im Off
 
 Außerdem empfehlen wir, mal in die [Youtube Playlist](https://youtube.com/playlist?list=PLIgABbRtVA6NQu33ZZ8LKrSedhAjmpMAb&si=GUxS6eNSMMCA1bNP) zu schauen, in denen wir von "CodeWithJon" einiges für sehr Lehrreich empfunden haben. Es lohnt sich auf jeden fall, mal das Video zu den Generics zu sehen!
 
-- [ ] OOModellierung und Java Standardmethoden
+- [x] OOModellierung und Java Standardmethoden
 - [ ] Objektorientierte Programmierung und Modellierung
 - [ ] Vererbung
 - [ ] Abstrakte Klassen
 - [ ] Interfaces
 - [ ] Objektorientierte Programmierung - Praxis
-- [ ] Collection Framework
+- [x] Collection Framework
 - [ ] Exception Handling
 - [ ] I/O & Objekt-Serialisierung
 - [ ] Generics
