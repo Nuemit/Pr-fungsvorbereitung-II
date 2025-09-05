@@ -11,6 +11,8 @@ Die Vorlesungsthemen die Abgebildet werden lauten:
 
 Wenn über Collections geredet wird, müssen wir über Datenstrukturen reden. Die Relevantesten sind vermutlich `List, Linked-List, Arrays, Binäre-Bäume, Hashtables und Hashmaps`
 
+Keine "Thread Safe" Klassen / Methoden existieren im Collections Framework!
+
 ## Grundlegende Erläuterung nach Prof
 Bei einer Objektverwaltung weiß man vor der Implementierung nicht immer genau, wie viele Objekte angelegt werden, so entstehen Probleme wenn man neue Objekte hinzufügen möchte. Ein Weiterer Punkt der Betohnt wird ist, dass man auch ab und zu, objekte aus einer Liste, löschen möchte.
 
@@ -295,6 +297,34 @@ if (people.isEmpty()) {
 
 // löscht alle elemente in people
 people.clear();
+
+// Algorithmen
+List<Integer> list = new ArrayList<>();
+list.add(1);
+list.add(4);
+list.add(2);
+list.add(5);
+list.add(3);
+
+System.out.println("Unsorted: " + list);
+Collections.sort(list);
+System.out.println("Sorted: " + list);
+
+System.out.println("Binary Search result -> " Collections.binarySearch(list, key:4));
+
+System.out.println("Frequency of 3 -> " + Collections.frequency(list, o:3));
+
+System.out.println("Max element in the List: " + Collections.max(list));
+System.out.println("Min element in the list: " + Collections.min(list)); 
+
+Collections.shuffle(list);
+System.out.println("Randomisierte Ordnung: " + list)
+
+Collections.swap(list,0,1);
+System.out.println("Die ersten beiden elemente vertauscht: " + list);
+
+Collections.fill(list, 3);
+System.out.println("List filled with 3: " + list);
 ```
 
 ## LinkedList
