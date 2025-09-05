@@ -42,7 +42,7 @@ Bezieht sich auf die erste Vorlesung von Prog-II
 </details>
 
 # Vererbung
-Datei: [Vererbung.md](02_AbstrakteKlassen)
+Datei: [Vererbung.md](02_1_2_AbstrakteKlassen#abstrakte-klassen)
 
 Bezieht sich auf die vierte Vorlesung von Prog-II
 <details>
