@@ -22,7 +22,7 @@ Außerdem empfehlen wir, mal in die [Youtube Playlist](https://youtube.com/playl
 
 
 # Modellierung
-Datei: [Modellierung.md](01_1_Modellierung-Done/PDF#pii-objektorientierung-wiederholung)
+Datei: [Modellierung.md](01_1_Modellierung/PDF#pii-objektorientierung-wiederholung)
 
 Bezieht sich auf die erste Vorlesung von Prog-II
 <details>
