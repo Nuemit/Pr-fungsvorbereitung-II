@@ -1,0 +1,4 @@
+Hallo Welt! 
+Dies ist ein Test für BufferedStream. 
+Zeile 3
+Ende der Nachricht
