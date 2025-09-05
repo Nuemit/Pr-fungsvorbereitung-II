@@ -17,8 +17,6 @@ Die Vorteile von Exception Handling sind unter anderem:
 1. Ausnahmen Erzeugen
 1. Checked und Unchecked Exceptions
 
-# Begriffe
-**Tabelle 1: Begriffserklärung**
-| Begriff | Erklärung |
-| :---- | :------ |
-| Exception | Ist ein Signal, das meldet, dass eine Ausnahmebedinung aufgetreten ist |
+|Begriff|Erklärung|
+|:-------|:--------|
+|Test|Test|
