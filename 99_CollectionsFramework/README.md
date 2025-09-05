@@ -269,6 +269,72 @@ public class ComparatorExample {
     }
 
 ```
+# Klassen und Szenarios
+Hier findet ihr Code beispiele zum Collection Framework - welche in dem Youtube Video sehr gut erklärt werden
+
+## ArrayList
+```java
+ArrayList<String> people = new ArrayList<>();
+
+people.add("John");
+people.add("Dave");
+people.add("Jane");
+
+people.remove(o:"Dave"); // mit Objekt
+people.remove(index:1) // mit int 
+
+// Schaut ob liste ein bestimmtes Objekt enthält
+if (people.contains(o:"John")) {
+    System.out.println("John is in the list");
+}
+
+// Schaut ob liste leer ist
+if (people.isEmpty()) {
+    System.out.println("List is empty");
+}
+
+// löscht alle elemente in people
+people.clear();
+```
+
+## LinkedList
+```java
+import java.util.LinkedList;
+
+// ....
+
+LinkedList<Integer> list = new LinkedList<>();
+
+list.add(1);
+list.add(2);
+list.add(3);
+
+// Braucht O(1) Zeit, da Elemente nicht verschoben werden müssen.
+list.remove(0); 
+
+// Besitzt die option Werte "anzubieten"
+list.offer(e:1);
+list.offer(e:2);
+list.offer(e:3);
+
+// Wenn wir dinge in die Queue rein tun können wir sie auch wieder entfernen,
+// last in, first out prinzip
+System.out.println(list.poll());
+System.out.println(list.poll());
+System.out.println(list.poll());
+
+// Außerdem kann eine LinkedList als ein Stack genutzt werden.
+// hat die "last in, first out"
+list.push(e:1);
+list.push(e:2);
+list.push(e:3);
+
+System.out.pritln(list.pop());
+System.out.pritln(list.pop());
+System.out.pritln(list.pop());
+```
+
+## 
 
 
 # Fragen
