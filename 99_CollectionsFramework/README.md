@@ -334,10 +334,89 @@ System.out.pritln(list.pop());
 System.out.pritln(list.pop());
 ```
 
-## 
+## Set's
+```java
+import java.util.*;
 
+// Sets erlauben keine Duplikate!
+Set<Integer> set = new HashSet<>(); // HashMap im hintergrund, erlaubt keine duplikate
+
+set.add(3);
+set.add(4);
+set.add(3); // Wird nicht hinzugefügt.
+
+Set<Integer> linkedHashSet = new LinkedHashSet<>(); //Linked List
+Set<Integer> treeSet = new TreeSet<>(); //Treemap im hintergrund
+```
+
+### Priority Queue
+```java
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+PriorityQueue<Integer> queue = new PriorityQueue<>();
+
+queue.offer(e:4);
+queue.offer(e:2);
+queue.offer(e:1);
+
+queue.poll();
+queue.poll();
+
+PriorityQueue<UserProfile> usersQueue = new PriorityQueue<>(
+    Comparator.comparing((Userprofile u) -> u.age)
+);
+
+usersQueue.offer(new UserProfile(age:20));
+usersQueue.offer(new UserProfile(age:30));
+usersQueue.offer(new UserProfile(age:40));
+
+System.out.println(usersQueue.poll().age);
+
+static class UserProfile {
+    private final Integer age;
+    public UserProfile(Integer age) {
+        this.age = age;
+    }
+    public Integer.getAge() {
+        return age;
+    }
+}
+// log(n) time complexity
+```
+
+### HashMap
+```java
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
+HashMap<String, Integer> populationByCity = new HashMap<>();
+
+populationByCity.put("New York", 230021);
+populationByCity.put("Las Vegas", 112234);
+populationByCity.put("San Francisco", 113561);
+
+Integer population = populationByCity.get("New York");
+
+if (populationByCity.containsKey("New York")) {
+    System.out.println("We got New Yorks population");
+}
+
+populationByCity.keySet();
+populationByCity.values();
+pupulationByCity.entrySet();
+
+// Wenn es spezifisch gebraucht wird, das die einträge
+// der reihe nach gespeichert werden.
+LinkedHashMap<String, Integer> orderedMap = new LinkedHashMap<>();
+```
 
 # Fragen
+Müssen noch beantwortet werden, aber eigtl. findet ihr die antwort auf diese fragen alle in den erklärungen Oben
+### TODO:
+- Fragen beantworten
+- Zusammenfassung geben
+
 ## Was zeichnet ein Framework aus?
 <details>
     <summary>Antwort</summary>
