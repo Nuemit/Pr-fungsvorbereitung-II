@@ -79,8 +79,24 @@ public class UnzureichendesGuthabenException extends Exception {
 }
 ```
 
-## throwable
+## Throwable
+**Klasse:** `java.lang.Throwable`<br>
+Eine Exception ist bei Java ein Objekt, einer Unteklasse von `java.lang.Throwable`. <br>
+Ein Objekt der Klasse `Throwable` enthält in seiner Definition eine `String`-Nachricht. Diese Variable wird von allen `Exception` Klassen geerbt. Es wird verwendet um eine für Menschen lesbare Fehlermeldung aufzunehmen.<br>
+Die Fehlermeldung die mitgegeben wird, wird beim Erzeugen eines `Exception`-Objekts gesetztt. Die Meldung kann mit der Methode `getMessage()` ausgelesen werden. Die meisten Exceptions der API enthalten nur diese eine Meldung. Manche enthalten aber auch andere Daten.
 
+### Unterklassen
+**Klasse:** `java.lang.Error` *Unchecked-Exceptions*<br>
+Die Exceptions der Klasse `Error` weisen üblicherweise auf Bindeprobleme beim dynamischen Laden oder auf Probleme der Virtuellen Maschine hin. Häufig sind sie nicht zu beheben. Es wird nicht erwartet, dass diese Exceptions abgefangen werden.<br>
+Häufige Errors:
+- `ThreadDeath`
+- `LinkageError`
+- `VirtualMachineError`
+- `RuntimeException`
+<br>
+
+**Klasse:** `java.lang.Exception` *Checked-Exceptions*<br>
+Diese Exceptions sind häufig zu beheben. Daher müssen die meisten Unterklassen von Exception abgefangen werden. In den Vorlesungen wird erklärt, dass wir nur im Allgemeinen von diesen Exceptions sprechen werden.
 
 ## Error
 
@@ -104,6 +120,41 @@ Das war die Erklärung aus den Folien, wenn wir das mal verbildlichen sieht die 
    1. Die Kette der Eimer: Dieser Prozess wiederholt sich. Tropft das Wasser von der zweiten Methoden weiter, geht es zur dritten, dann zur vierten usw. bis es schließlich den Größten Eimer, die `Main` Methode, erreicht.
 
 ## Anweisungen
+**Grundkonzept der Behandlung von Ausnahmen** erfolgt in Java nach dem Schema:
+* Ausprobieren - `try`
+* Auffangen - `catch`
+* Seiteneffekte beseitigen - `finally`
+
+Die Schreibweise sieht folgendermaßen aus:
+**Standardmäßig** 
+```java
+try { //folge von Anweisungen
+
+} catch (xException e) { // optionale Reaktion
+
+} catch (xyException e) { // optionale Reaktion
+
+} finally { // optionale abschließende Maßnahmen
+
+}
+```
+**Multicatch**
+```java
+try { //folge von Anweisungen
+
+} catch (xException | yException e) { // optionale Reaktion
+
+} finally { // optionale abschließende Maßnahmen
+
+}
+```
+
+### `try`
+- Die `try` Klausel stellt den Codeblock bereit in dem eine Exception auftreten kann
+- Die `try` Klauses selbst macht nichts, außer dass sie bei Exceptions eine ggf. vorhandene `catch`-Klausel aktiviert.
+### `catch`
+- Auf einen `try` Block können keine, eine oder mehrere `catch` Klauseln folgen.
+- Jede `catch` Klausel hat ein Argument, ähnlich wie bei Methodenargumenten. Dieses Argument muss vom Typ `Throwable` bzw. einer ***Unterklasse*** sein. Das Argument ist nur innerhalb dieses `catch`-Block gültig.
 
 ## Ausnahmen Deklarieren
 
