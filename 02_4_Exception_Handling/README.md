@@ -152,9 +152,18 @@ try { //folge von Anweisungen
 ### `try`
 - Die `try` Klausel stellt den Codeblock bereit in dem eine Exception auftreten kann
 - Die `try` Klauses selbst macht nichts, außer dass sie bei Exceptions eine ggf. vorhandene `catch`-Klausel aktiviert.
+- Ein `try`-Block kann nicht für sich alleine stehen. Es muss entweder ein `catch`- Block oder ein `finally`-Block folgen
+- Es darf kein anderer Code zwischen dem `try`-Block und seinem `catch`-Block oder seinem `finally`-Block stehen.
 ### `catch`
 - Auf einen `try` Block können keine, eine oder mehrere `catch` Klauseln folgen.
 - Jede `catch` Klausel hat ein Argument, ähnlich wie bei Methodenargumenten. Dieses Argument muss vom Typ `Throwable` bzw. einer ***Unterklasse*** sein. Das Argument ist nur innerhalb dieses `catch`-Block gültig.
+- Tritt eine Exception ein, wird die erste `catch`Klausel ausgeführt die ein Argument des entsprechendnen Typs hat.
+- Der Code innerhalb des `catch` Blocks soll alle Arbeiten erledigen die notwendig sind, um die Ausnahmebedingungen zu beheben.
+### `finally`
+- Die `finally` Klausel wird generell eingesetzt, um nach der `try-catch` Klausel aufzuräumen
+- Die `finally` Klausel wird garantiert durchgeführt.
+- Im **Normalfall**, wird der `try`-Block bis zum Ende abgearbeitet udn dann mit dem `finally` Block weitergemacht.
+- Ist Optional.
 
 ## Ausnahmen Deklarieren
 
@@ -163,3 +172,40 @@ try { //folge von Anweisungen
 ## Ausnahmen Erzeugen
 
 ## Checked und Unchecked Exceptions
+
+# Fragen aus der Vorlesung
+## Wozu ist allgemein Exception Handling gut?
+<details>
+    <summary>Antwort</summary>
+
+</details>
+
+## Wozu dienen throw und throws?
+<details>
+    <summary>Antwort</summary>
+
+</details>
+
+## Wozu dienen try, catch finally?
+<details>
+    <summary>Antwort</summary>
+
+</details>
+
+## Wann sollte man eine Exception abfangen und wann weiterpropagieren?• Wie können eigene Exceptions (sowohl checked als auch unchecked)definiert werden?
+<details>
+    <summary>Antwort</summary>
+
+</details>
+
+## Wie können eigene Exceptions ausgelöst werden?
+<details>
+    <summary>Antwort</summary>
+
+</details>
+
+## Was ist der Unterschied zwischen checked und unchecked Exceptions?• Wann sollte man eine checked Exception einsetzen und wann eineunchecked Exception?
+<details>
+    <summary>Antwort</summary>
+
+</details>
