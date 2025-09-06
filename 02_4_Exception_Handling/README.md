@@ -173,6 +173,37 @@ try { //folge von Anweisungen
 
 ## Checked und Unchecked Exceptions
 
+## Beispiel
+```java
+// Random Number output:
+public static void main(String[] args) {
+    try {
+        printeZahlen(3);
+        printeZahlen(0);
+    } catch (IllegalArgumentException e) {
+        System.out.println("Fehler: " + e.getMessage());  
+    }
+}
+
+// Bei mehr als einer Exception: Methodenname() throws Exception1, Exception2, Exception3 { 
+public static void printeZahlen(int anzahl) throws IllegalArgumentException{
+    if (anzahl <= 0) {
+        throw new IllegalArgumentException("Anzahl muss größer als 0 sein");
+    } else if (anzahl >= 100)
+        throw new IllegalArgumentException("Anzahl darf nicht größer als 100 sein");
+    for (int i = 0; i < anzahl; i++) {
+        System.out.println(Math.random());
+    }
+} 
+```
+<br>
+
+**Mögliche Ausgabe**
+> 0.9268865345767542
+> 0.344957292900992
+> 0.7120518985691079
+> Anzahl muss größer als 0 sein
+
 # Fragen aus der Vorlesung
 ## Wozu ist allgemein Exception Handling gut?
 <details>
