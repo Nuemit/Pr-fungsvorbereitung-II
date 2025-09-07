@@ -4,7 +4,7 @@ import java.util.Objects;
 public class WettKampfTeilnehmer extends Sportler implements Comparable<WettKampfTeilnehmer> {
 
     private int startnummer;
-    private static int anzTeilnehmer = 1;
+    private static int anzTeilnehmer = 0;
     
     public WettKampfTeilnehmer (String nName, LocalDate gbDate, int nStartnummer) {
         super(nName,gbDate);

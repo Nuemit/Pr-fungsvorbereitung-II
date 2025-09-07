@@ -34,7 +34,7 @@ public class Sportler {
     StringBuffer sb = new StringBuffer();
     sb.append("Name: ")
     .append(this.name)
-    .append("\nGeburtsdatum")
+    .append("\nGeburtsdatum: ")
     .append(this.geburtsdatum.toString());
 
     return sb.toString();
