@@ -47,9 +47,10 @@ Implementieren Sie den Initialisierungskonstruktor der Klasse Player, so dass al
 
 ### 2. Erklären Sie den Unterschied zwischen Vererbungswiederverwendung und Nutzungswiederverwendung, indem Sie auf den Zweck eingehen und festlegen, ob abstrakte Klassen oder Interfaces als Implementierungkonzept besser geeignet sind. 
 
-| ------- | Vererbungswiederverwendung | Nutzungswiederverwendung |
-| Zweck  | -------------------------- | ------------------------ |
-| Implementierungskonzept | --- | --- | 
+| ----------------------- | Vererbungswiederverwendung | Nutzungswiederverwendung |
+| ----------------------- | -------------------------- | ------------------------ |
+| Zweck                   | -------------------------- | ------------------------ |
+| Implementierungskonzept | -------------------------- | ------------------------ | 
 
 
 ### 3. Gegeben ist folgendes Klassendiagramm ( achten Sie auf Kursivschrift):
