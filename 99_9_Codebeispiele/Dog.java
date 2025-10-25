@@ -8,11 +8,13 @@ public class Dog {
     private int numberOfLegs;
 
     // Default Konstruktor / no args Konstruktor () sind leer
+    @SuppressWarnings("OverridableMethodCallInConstructor")
     public Dog () {
         setNumberOfLegs(4);
     }
 
     // Initialisierungs Konstruktor
+    @SuppressWarnings("OverridableMethodCallInConstructor")
     public Dog (int numberOfLegs) {
         setNumberOfLegs(numberOfLegs);
     } 
