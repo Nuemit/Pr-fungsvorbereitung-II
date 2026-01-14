@@ -42,6 +42,8 @@ jobs:
           git remote add mirror "$MIRROR_URL"
 
           # Push all branches and tags to mirror
+          # Note: --force is required for mirroring to update the
+          # target repository with the complete state of the source
           git push mirror --mirror --force
 
           echo "Repository mirrored successfully to target"

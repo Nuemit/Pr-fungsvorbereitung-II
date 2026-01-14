@@ -50,17 +50,17 @@ Die Action spiegelt dann:
 
 ### GitHub zu GitHub:
 ```
-https://nuemit:ghp_xxxxxxxxxxxxxxxxxxxxx@github.com/nuemit/target-repository.git
+https://username:ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxx@github.com/username/target-repository.git
 ```
 
 ### GitHub zu GitLab:
 ```
-https://nuemit:glpat-xxxxxxxxxxxxxxxxxxxxx@gitlab.com/nuemit/target-repository.git
+https://username:glpat-xxxxxxxxxxxxxxxxxxxx@gitlab.com/username/target-repository.git
 ```
 
 ### GitHub zu Bitbucket:
 ```
-https://nuemit:xxxxxxxxxxxxxxxxxxxxx@bitbucket.org/nuemit/target-repository.git
+https://username:YOUR_APP_PASSWORD_HERE@bitbucket.org/username/target-repository.git
 ```
 
 ## Fehlerbehebung / Troubleshooting
