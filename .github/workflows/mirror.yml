@@ -1,0 +1,47 @@
+---
+name: Mirror Repository
+
+'on':
+  push:
+    branches:
+      - '**'
+  delete:
+    branches:
+      - '**'
+  create:
+    tags:
+      - '**'
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    name: Mirror to Target Repository
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mirror repository
+        env:
+          MIRROR_URL: ${{ secrets.MIRROR_URL }}
+        run: |
+          if [ -z "$MIRROR_URL" ]; then
+            echo "Error: MIRROR_URL secret is not set"
+            echo "Please configure the MIRROR_URL secret"
+            echo "in your repository settings"
+            echo "Example: https://username:token@github.com/..."
+            exit 1
+          fi
+
+          # Configure git
+          git config --global user.name "GitHub Mirror Bot"
+          git config --global user.email "noreply@github.com"
+
+          # Add mirror remote
+          git remote add mirror "$MIRROR_URL"
+
+          # Push all branches and tags to mirror
+          git push mirror --mirror --force
+
+          echo "Repository mirrored successfully to target"
