@@ -16,6 +16,8 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     name: Mirror to Target Repository
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
