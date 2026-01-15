@@ -23,7 +23,7 @@ public class StringBuffer_tut {
     public static void main(String[] args) {
         StringBuffer_tut p1 = new StringBuffer_tut("Eric", 24);
 
-       System.out.println(p1.toString());
+        System.out.println(p1.toString());
     }
 
     @Override
