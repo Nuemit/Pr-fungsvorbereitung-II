@@ -1,4 +1,7 @@
 # Prüfungsvorbereitung-II
+
+> 🔄 **Repository Mirroring**: Dieses Repository kann automatisch auf ein anderes gespiegelt werden. Siehe [MIRROR_SETUP.md](MIRROR_SETUP.md) für Anweisungen.
+
 Ergänzend zu den Inhalten innerhalb dieses repos findet ihr alle Inhalte im Offenen Buch von Rheinwerk:
 - [Java ist auch eine Insel](https://openbook.rheinwerk-verlag.de/javainsel/index.html)
 

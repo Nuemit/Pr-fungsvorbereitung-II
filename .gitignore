@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+target/
+build/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
