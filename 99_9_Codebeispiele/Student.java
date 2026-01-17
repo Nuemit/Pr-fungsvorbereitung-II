@@ -28,7 +28,7 @@ public class Student implements Comparable<Student>, Comparator<Student>{
 
     @Override
     public int compareTo (Student other) {
-        return Integer.compare(this.matrikelNummer, other.matrikelNummer);
+        return Integer.compare(this.getMatrikelNummer(), other.getMatrikelNummer());
     }
 
     @Override
